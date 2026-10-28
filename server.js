@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || 3000;
+const PORT = parseInt(process.env.PORT, 10) || 3000;
 const DIRECTORY = __dirname;
 
 const MIME_TYPES = {
@@ -27,7 +27,6 @@ const server = http.createServer((req, res) => {
   const sanitizedRelPath = reqPath.replace(/^\/+/, '');
   const filePath = path.join(DIRECTORY, sanitizedRelPath);
 
-  // Security: prevent directory traversal
   if (!filePath.startsWith(DIRECTORY)) {
     res.writeHead(403);
     return res.end('Forbidden');
@@ -35,7 +34,6 @@ const server = http.createServer((req, res) => {
 
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
-      // Fallback to index.html for SPA routing if needed
       const indexPath = path.join(DIRECTORY, 'index.html');
       fs.stat(indexPath, (idxErr, idxStats) => {
         if (!idxErr && idxStats.isFile()) {
@@ -56,15 +54,20 @@ const server = http.createServer((req, res) => {
 
     res.writeHead(200, {
       'Content-Type': contentType,
+      'Content-Length': stats.size,
       'Access-Control-Allow-Origin': '*',
       'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
     });
 
-    fs.createReadStream(filePath).pipe(res);
+    const stream = fs.createReadStream(filePath);
+    stream.on('error', () => {
+      if (!res.headersSent) res.writeHead(500);
+      res.end('Stream error');
+    });
+    stream.pipe(res);
   });
 });
 
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Priya & Umesh Wedding Invitation running at http://localhost:${PORT} and http://127.0.0.1:${PORT}`);
+server.listen(PORT, () => {
+  console.log(`Wedding invitation server active at http://localhost:${PORT}`);
 });
-
