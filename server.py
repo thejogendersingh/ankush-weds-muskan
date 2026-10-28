@@ -41,3 +41,4 @@ if __name__ == "__main__":
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     print(f"Serving Priya & Umesh Wedding Invitation at http://localhost:{PORT} and http://127.0.0.1:{PORT}")
     server.serve_forever()
+
