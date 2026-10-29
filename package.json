@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "description": "Ankush & Muskan Wedding Invitation",
+  "main": "server.js",
   "scripts": {
-    "dev": "node local_server.js",
-    "serve": "node local_server.js",
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js",
     "serve:py": "python server.py"
   },
   "keywords": [

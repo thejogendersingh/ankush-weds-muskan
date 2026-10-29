@@ -3,7 +3,18 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = parseInt(process.env.PORT, 10) || 3000;
-const DIRECTORY = __dirname;
+
+function resolveLocalPath(relPath) {
+  const candidates = [
+    path.join(__dirname, relPath),
+    path.join(process.cwd(), relPath),
+    path.join(__dirname, '..', relPath)
+  ];
+  for (const p of candidates) {
+    if (fs.existsSync(p)) return p;
+  }
+  return path.join(__dirname, relPath);
+}
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -29,16 +40,11 @@ const server = http.createServer((req, res) => {
   if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
 
   const sanitizedRelPath = reqPath.replace(/^\/+/, '');
-  const filePath = path.join(DIRECTORY, sanitizedRelPath);
-
-  if (!filePath.startsWith(DIRECTORY)) {
-    res.writeHead(403);
-    return res.end('Forbidden');
-  }
+  let filePath = resolveLocalPath(sanitizedRelPath);
 
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
-      const indexPath = path.join(DIRECTORY, 'index.html');
+      const indexPath = resolveLocalPath('index.html');
       fs.stat(indexPath, (idxErr, idxStats) => {
         if (!idxErr && idxStats.isFile()) {
           res.writeHead(200, {
@@ -92,7 +98,7 @@ const server = http.createServer((req, res) => {
         'Content-Length': totalSize,
         'Accept-Ranges': 'bytes',
         'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
+        'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=31536000, immutable'
       });
 
       const stream = fs.createReadStream(filePath);
@@ -105,6 +111,10 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Wedding invitation server active at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  server.listen(PORT, '0.0.0.0', () => {
+    console.log(`Wedding invitation server active at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = server;
