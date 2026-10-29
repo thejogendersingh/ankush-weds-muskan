@@ -444,7 +444,7 @@
          1. INTRO ENTRY GATE (Peacock Royal Video Gate)
     ═══════════════════════════════════════════ -->
     <div id="entry-gate">
-        <video id="entry-video" playsinline webkit-playsinline muted preload="auto" disablePictureInPicture>
+        <video id="entry-video" playsinline webkit-playsinline muted preload="auto" poster="assets/intro-poster.jpg" disablePictureInPicture>
             <source src="assets/intro-video.mp4#t=0.001" type="video/mp4">
         </video>
         <div id="play-overlay">
@@ -1568,38 +1568,33 @@
         }
     }
 
-    gate.addEventListener('click', async () => {
+    function handleGateOpen(e) {
         if (mainRevealed) return;
         gate.classList.add('is-opening');
         playOverlay.classList.add('hidden');
-        window.setTimeout(revealMain, 8000);
+        window.setTimeout(revealMain, 7500);
         try {
             entryVideo.muted = false;
-            await entryVideo.play();
-            try {
-                await bgAudio.play();
-                audioPlaying = true;
-                updateAudioIcon();
-            } catch(_) {}
+            const p = entryVideo.play();
+            if (p && p.catch) {
+                p.catch(() => {
+                    entryVideo.muted = true;
+                    entryVideo.play().catch(() => revealMain());
+                });
+            }
         } catch(err) {
             entryVideo.muted = true;
-            try {
-                await entryVideo.play();
-                try {
-                    await bgAudio.play();
-                    audioPlaying = true;
-                    updateAudioIcon();
-                } catch(_) {}
-            } catch(e2) {
-                revealMain();
-            }
+            try { entryVideo.play().catch(() => revealMain()); } catch(e2) { revealMain(); }
         }
-    });
-
-    if (openInvitation) {
-        openInvitation.addEventListener('click', event => event.stopPropagation());
-        openInvitation.addEventListener('click', () => gate.click());
+        try {
+            bgAudio.play().then(() => {
+                audioPlaying = true;
+                updateAudioIcon();
+            }).catch(() => {});
+        } catch(_) {}
     }
+
+    gate.addEventListener('click', handleGateOpen);
     entryVideo.addEventListener('ended', revealMain);
     document.body.style.overflow = 'hidden';
 

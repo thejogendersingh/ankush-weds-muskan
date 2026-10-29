@@ -1,6 +1,13 @@
 /* Locally hosted, OFL-licensed typography for the invitation shell.
    Event and wardrobe card lettering intentionally stays with Invitation Serif. */
 @font-face {
+  font-family: 'Invitation Serif';
+  src: url("fonts/invitation-serif.woff2") format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
   font-family: 'Wedding Script';
   src: url("fonts/pinyon-script-latin.woff2") format('woff2');
   font-style: normal;

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Priya & Umesh Wedding Invitation",
   "scripts": {
+    "build": "echo 'Static build ready'",
     "start": "node server.js",
     "dev": "node server.js",
     "serve": "node server.js",

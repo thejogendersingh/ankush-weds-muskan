@@ -115,12 +115,17 @@
            ENTRY VIDEO GATE
         ============================================================ */
         #entry-gate {
-            position: fixed; inset: 0; background: #0a0505; z-index: 9999;
+            position: fixed; inset: 0;
+            background: #231215 url('intro-poster.jpg') center/cover no-repeat;
+            z-index: 9999;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: opacity 0.8s ease; user-select: none;
             -webkit-user-select: none;
         }
-        #entry-gate video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        #entry-gate video {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            background: #231215 url('intro-poster.jpg') center/cover no-repeat;
+        }
         #play-overlay {
             position: absolute; inset: 0; display: flex; flex-direction: column;
             align-items: center; justify-content: flex-start; z-index: 2;
@@ -191,7 +196,10 @@
             display: block;
             max-width: 100%;
             margin: 0.16rem auto 0.4rem;
-            font: 500 clamp(2.3rem, 8vw, 4.4rem)/0.98 'Invitation Serif', cursive;
+            font-family: 'Invitation Serif', 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            font-size: clamp(2.3rem, 8vw, 4.4rem);
+            line-height: 1.05;
             color: #A95622;
             overflow-wrap: anywhere;
             text-wrap: balance;
@@ -307,7 +315,7 @@
             letter-spacing: 0.35em; text-transform: uppercase;
             color: var(--gold); display: block; margin-bottom: 0.75rem;
         }
-        .section-heading { font-family: 'Invitation Serif', cursive; font-size: clamp(3.5rem, 10vw, 5.5rem); line-height: 1.1; }
+        .section-heading { font-family: 'Invitation Serif', 'Cormorant Garamond', Georgia, serif; font-size: clamp(3.5rem, 10vw, 5.5rem); line-height: 1.1; }
 
         /* ============================================================
            MAIN CONTENT & HERO
@@ -375,12 +383,12 @@
 
         .blessings-text { font-family: 'Invitation Serif', serif; font-style: italic; font-size: 1.05rem; color: var(--text-mid); line-height: 1.5; margin-bottom: 1.75rem; padding: 0 1rem; }
         .couple-block { width: 100%; margin-bottom: 0.5rem; }
-        .couple-name { font-family: 'Invitation Serif', cursive; font-size: clamp(3.5rem, 11vw, 5.2rem); line-height: 1.1; display: block; letter-spacing: 0.02em; padding: 0.2rem 0; font-weight: normal; }
+        .couple-name { font-family: 'Invitation Serif', 'Cormorant Garamond', Georgia, serif; font-size: clamp(3.5rem, 11vw, 5.2rem); line-height: 1.1; display: block; letter-spacing: 0.02em; padding: 0.2rem 0; font-weight: normal; }
         .family-line { font-family: 'Invitation Serif', serif; font-size: 0.9rem; font-weight: 500; color: var(--text-dark); line-height: 1.4; margin-top: 0.5rem; }
 
         .ampersand-wrap { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; width: 100%; }
         .ampersand-line { height: 1px; width: 40px; background: var(--border); }
-        .ampersand { font-family: 'Invitation Serif', cursive; font-size: 2.2rem; color: var(--gold); line-height: 1; }
+        .ampersand { font-family: 'Invitation Serif', 'Cormorant Garamond', Georgia, serif; font-size: 2.2rem; color: var(--gold); line-height: 1; }
 
         .card-corner { position: absolute; width: 32px; height: 32px; border-color: rgba(201,150,62,0.35); border-style: solid; }
         .card-corner.tl { top:16px; left:16px; border-width: 1px 0 0 1px; border-radius: 4px 0 0 0; }
@@ -452,7 +460,7 @@
         }
 
         .surprise-message {
-            font-family: 'Invitation Serif', cursive; font-size: 3rem; color: var(--terracotta);
+            font-family: 'Invitation Serif', 'Cormorant Garamond', Georgia, serif; font-size: 3rem; color: var(--terracotta);
             margin-top: 2rem; opacity: 0; transform: translateY(15px);
             transition: all 1.2s ease;
         }
@@ -630,7 +638,7 @@
         .circle-select { display: flex; gap: 1.5rem; justify-content: center; }
         .circle-opt { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; cursor: pointer; }
         .circle-opt input { display: none; }
-        .circle-face { width: 60px; height: 60px; border-radius: 50%; border: 1.5px solid var(--border); background: rgba(23,16,28,0.72); display: flex; align-items: center; justify-content: center; font-family: 'Invitation Serif', cursive; font-size: 1.8rem; color: var(--terracotta); transition: all 0.25s ease; }
+        .circle-face { width: 60px; height: 60px; border-radius: 50%; border: 1.5px solid var(--border); background: rgba(23,16,28,0.72); display: flex; align-items: center; justify-content: center; font-family: 'Invitation Serif', 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; color: var(--terracotta); transition: all 0.25s ease; }
         body.light-theme .circle-face { background: var(--cream); }
         .circle-opt:has(input:checked) .circle-face { background: var(--terracotta); border-color: var(--terracotta); color: white; box-shadow: 0 4px 16px rgba(184,89,64,0.35); }
         .circle-opt-label { font-family: 'Invitation Serif', serif; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); }
@@ -669,7 +677,7 @@
         @keyframes modalIn { from { opacity:0; transform: scale(0.9) translateY(20px); } to { opacity:1; transform: scale(1) translateY(0); } }
         .modal-icon-ring { width: 72px; height: 72px; border-radius: 50%; background: rgba(184,89,64,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
         .modal-icon-ring svg { width: 32px; color: var(--terracotta); }
-        .modal-title { font-family: 'Invitation Serif', cursive; font-size: 3rem; color: var(--terracotta); margin-bottom: 0.5rem; }
+        .modal-title { font-family: 'Invitation Serif', 'Cormorant Garamond', Georgia, serif; font-size: 3rem; color: var(--terracotta); margin-bottom: 0.5rem; }
         .modal-msg { font-style: italic; font-family: 'Invitation Serif', serif; color: var(--text-light); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.75rem; }
         .modal-close-btn { background: var(--terracotta); color: white; border: none; border-radius: 9999px; padding: 0.85rem 2.5rem; font-family: 'Invitation Serif', serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; width: 100%; }
         .modal-close-btn:hover { background: var(--terra-dark); }
