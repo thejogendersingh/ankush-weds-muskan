@@ -4,6 +4,7 @@
   "private": true,
   "description": "Ankush & Muskan Wedding Invitation",
   "scripts": {
+    "build": "node build.js",
     "dev": "node server.js",
     "serve": "node server.js",
     "serve:py": "python server.py"

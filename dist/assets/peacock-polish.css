@@ -1,0 +1,69 @@
+/* Peacock Courtyard: a consistent evening palette, without changing printed cards. */
+body:not(.light-theme) {
+  --cream:#20131a; --cream-2:#2c1b24; --white:#30202a;
+  --terracotta:#f0d5ae; --terra-dark:#d9b984; --terra-light:#f7e7cc;
+  --gold:#ddbd85; --gold-light:#f4dfb7; --gold-pale:#493326;
+  --text-dark:#fff5e9; --text-mid:#edddce; --text-light:#d3bead;
+  --border:rgba(231,202,160,.28);
+  background:#20131a;
+}
+body:not(.light-theme) .section-texture { background-color:#281821; background-blend-mode:multiply; }
+body:not(.light-theme) #scratch-reveal-section { background-color:#281821; background-blend-mode:multiply; }
+body:not(.light-theme) #memories-section,
+body:not(.light-theme) #events-section,
+body:not(.light-theme) #wardrobe-section,
+body:not(.light-theme) #rsvp-section,
+body:not(.light-theme) #family-messages-section { background-color:#20131a; }
+body:not(.light-theme) .shimmer-gold {
+  color:#f4dfb7; background:none; -webkit-text-fill-color:currentColor;
+  text-shadow:0 2px 16px rgba(0,0,0,.15);
+}
+body:not(.light-theme) #lanterns-canvas.active { opacity:.19; }
+body:not(.light-theme) .section-label { color:#ddbd85; }
+body:not(.light-theme) #rsvp-section .form-card {
+  background:linear-gradient(145deg,rgba(70,43,53,.92),rgba(37,23,32,.94));
+  border-color:rgba(231,202,160,.28);
+  box-shadow:0 16px 42px rgba(9,4,8,.22),inset 0 1px 0 rgba(255,238,214,.08);
+}
+body:not(.light-theme) #rsvp-section .form-card::before { opacity:.08; }
+body:not(.light-theme) #rsvp-section .field-input,
+body:not(.light-theme) #rsvp-section .text-area {
+  background:rgba(16,10,15,.55); color:#fff5e9; border-color:rgba(231,202,160,.32);
+}
+body:not(.light-theme) #rsvp-section input::placeholder,
+body:not(.light-theme) #rsvp-section textarea::placeholder { color:#c7b7ac; opacity:1; }
+body:not(.light-theme) #rsvp-section .checkbox-pill,
+body:not(.light-theme) #rsvp-section .circle-face { background:rgba(255,238,215,.055); color:#f4dfb7; border-color:rgba(231,202,160,.3); }
+body:not(.light-theme) #rsvp-section .checkbox-pill:has(input:checked),
+body:not(.light-theme) #rsvp-section .circle-opt:has(input:checked) .circle-face { background:#efd6ac; color:#35212b; border-color:#f4dfb7; }
+body:not(.light-theme) #rsvp-section .guest-stepper-button,
+body:not(.light-theme) #rsvp-section .guest-number-card,
+body:not(.light-theme) .countdown-container,
+body:not(.light-theme) .cd-item { background:rgba(49,30,40,.88); border-color:rgba(231,202,160,.28); box-shadow:inset 0 1px 0 rgba(255,238,214,.07); }
+body:not(.light-theme) #rsvp-section #submit-btn { background:linear-gradient(135deg,#81404f,#612c40); color:#fff5e9; border-color:rgba(231,202,160,.4); }
+body:not(.light-theme) #rsvp-section #submit-btn:hover { background:#854655; }
+body:not(.light-theme) .calendar-button:hover { background:#49303a; }
+body #memories-section .text-center.reveal,
+body:not(.light-theme) #memories-section .text-center.reveal { background:none; box-shadow:none; }
+/* Reserve room for the initial's descender before the separator. */
+#footer-section .footer-couple-names { display:flex; flex-direction:column; align-items:center; gap:0; }
+#footer-section .footer-name { line-height:1.18; padding:.1em .16em .22em; }
+#footer-section .footer-couple-names .footer-ampersand {
+  margin:.28em auto .55em; font-family:Georgia,serif; font-size:.32em;
+  font-style:normal; line-height:1.3; color:#f4dfb7;
+}
+/* These two anchors receive inline styles from the shared sample navigation. */
+body #sample-navigation a {
+  background:linear-gradient(135deg,rgba(255,250,239,.76),rgba(255,244,226,.48)) !important;
+  color:#502735 !important; border:1px solid rgba(255,249,235,.7) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 6px 24px rgba(30,12,24,.14) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(130%); backdrop-filter:blur(20px) saturate(130%);
+  transition:background .2s,box-shadow .2s;
+}
+body:not(.light-theme) #sample-navigation a {
+  background:linear-gradient(135deg,rgba(72,40,52,.72),rgba(37,22,32,.5)) !important;
+  color:#fff3e0 !important; border-color:rgba(244,223,183,.42) !important;
+  box-shadow:inset 0 1px 0 rgba(255,240,216,.14),0 6px 24px rgba(12,4,9,.22) !important;
+}
+body #sample-navigation a:hover { box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 8px 28px rgba(30,12,24,.28) !important; }
+body #sample-navigation a:focus-visible { outline:2px solid #ddbd85; outline-offset:4px; }
