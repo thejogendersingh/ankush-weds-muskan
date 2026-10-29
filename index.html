@@ -445,7 +445,7 @@
     ═══════════════════════════════════════════ -->
     <div id="entry-gate">
         <video id="entry-video" playsinline webkit-playsinline muted preload="auto" disablePictureInPicture>
-            <source src="assets/intro-video.mp4" type="video/mp4">
+            <source src="assets/intro-video.mp4#t=0.001" type="video/mp4">
         </video>
         <div id="play-overlay">
             <div class="recipient-card" aria-labelledby="recipient-name">
@@ -1048,17 +1048,21 @@
         ═══════════════════════════════════════════ -->
         <section id="footer-section">
             <div class="footer-content reveal">
-                <h3 class="footer-couple">Ankush &amp; Muskan</h3>
-                <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.8rem 0;opacity:0.4;">
+                <span class="footer-couple-names">
+                    <span class="footer-name">Ankush</span>
+                    <span class="footer-ampersand">&amp;</span>
+                    <span class="footer-name">Muskan</span>
+                </span>
+                <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2.2rem;opacity:0.4;">
                     <div style="height:1px;width:60px;background:var(--gold-light);"></div>
                     <span style="color:var(--gold-light);font-size:1.1rem;">♥</span>
                     <div style="height:1px;width:60px;background:var(--gold-light);"></div>
                 </div>
-                <p class="footer-quote">
-                    Two hearts, two families, one sacred bond.<br>Thank you for being part of ours.
+                <p class="footer-story">
+                    Two families, one love story.<br>Thank you for being part of ours.
                 </p>
                 <p class="footer-details">
-                    <span>20 November 2026</span> &bull; <span>Aashika Resort, Bhilwara</span>
+                    <span>NOVEMBER 20, 2026</span> &bull; <span>AASHIKA RESORT, BHILWARA</span>
                 </p>
                 <p class="footer-hashtag">
                     #AnkushWedsMuskan
@@ -1073,6 +1077,7 @@
     <script src="assets/v2-effects.js"></script>
 
     <script>
+
     /* ═══════════════════════════════════════════
        CONFIG
     ═══════════════════════════════════════════ */
@@ -1117,17 +1122,17 @@
         });
 
         const text = encodeURIComponent(
-            \`*Wedding RSVP & Wishes*\\n\` +
-            \`*Name:* \${name}\\n\` +
-            \`*Guests:* \${guestsCount}\\n\` +
-            (phone ? \`*Phone:* \${phone}\\n\` : '') +
-            (note ? \`*Message:* \${note}\\n\` : '') +
-            \`*For:* Umesh (Ankush) & Priya (Muskan)\\n\` +
-            \`*Venue:* Aashika Resort, Bhilwara\`
+            `*Wedding RSVP & Wishes*\\n` +
+            `*Name:* ${name}\\n` +
+            `*Guests:* ${guestsCount}\\n` +
+            (phone ? `*Phone:* ${phone}\\n` : '') +
+            (note ? `*Message:* ${note}\\n` : '') +
+            `*For:* Umesh (Ankush) & Priya (Muskan)\\n` +
+            `*Venue:* Aashika Resort, Bhilwara`
         );
 
         setTimeout(() => {
-            window.open(\`https://wa.me/919414114190?text=\${text}\`, '_blank');
+            window.open(`https://wa.me/919414114190?text=${text}`, '_blank');
         }, 600);
     }
 
@@ -1305,12 +1310,12 @@
         const params = new URLSearchParams({
             action: 'TEMPLATE',
             text: 'Umesh (Ankush) & Priya (Muskan) Wedding',
-            dates: \`\${stamp(start)}/\${stamp(end)}\`,
+            dates: `${stamp(start)}/${stamp(end)}`,
             details: 'Celebrate the royal wedding of Umesh (Ankush) and Priya (Muskan) at Aashika Resort, Bhilwara.',
             location: 'Aashika Resort, Bhilwara',
             ctz: 'Asia/Kolkata'
         });
-        button.href = \`https://calendar.google.com/calendar/render?\${params}\`;
+        button.href = `https://calendar.google.com/calendar/render?${params}`;
     };
     window.updateCalendarLink();
 
@@ -1402,8 +1407,8 @@
         moveLens(e) {
             if (!this.lens) return;
             const pos = this.getMousePos(e);
-            this.lens.style.left = \`\${pos.x}px\`;
-            this.lens.style.top = \`\${pos.y}px\`;
+            this.lens.style.left = `${pos.x}px`;
+            this.lens.style.top = `${pos.y}px`;
             if (this.isDrawing) this.container.classList.add('is-scratching');
         }
         scratch(e) {
@@ -1532,7 +1537,7 @@
     let scratchInitialized = false;
 
     const invitee = (new URLSearchParams(window.location.search).get('to') || '')
-        .replace(/\\s+/g, ' ')
+        .replace(/\s+/g, ' ')
         .trim()
         .slice(0, 80);
 
@@ -1645,6 +1650,7 @@
             e.stopPropagation();
             if (audioPlaying) {
                 bgAudio.pause();
+
                 audioPlaying = false;
             } else {
                 try {
@@ -1671,6 +1677,7 @@
         }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
         els.forEach(el => io.observe(el));
     }
-    </script>
+    
+</script>
 </body>
 </html>
