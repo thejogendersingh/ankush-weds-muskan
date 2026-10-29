@@ -3,480 +3,529 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Umesh (Ankush) &amp; Priya (Muskan) — Royal Wedding Invitation</title>
-    <meta name="description" content="You are cordially invited to celebrate the royal wedding of Umesh (Ankush) and Priya (Muskan) on 20 November 2026 at Aashika Resort, Bhilwara.">
-    <link rel="icon" type="image/png" href="assets/vinayak.png">
+    <title>Ankush &amp; Muskan | Royal Wedding Invitation · 20 November 2026</title>
+    <meta name="description" content="You are cordially invited to the wedding of Umesh (Ankush) &amp; Priya (Muskan) on 20 November 2026 at Aashika Resort, Bhilwara.">
+    <meta property="og:title" content="Ankush &amp; Muskan — You're Invited">
+    <meta property="og:description" content="Join us on 20 November 2026 at Aashika Resort, Bhilwara.">
+    <link rel="icon" href="assets/vinayak.png" type="image/png">
 
-    <!-- Preload Critical Video Assets -->
     <link rel="preload" as="video" href="assets/intro-video.mp4">
-    <link rel="preload" as="video" href="assets/hero-butterflies-flowers.mp4">
 
-    <!-- Google Fonts for Luxury Typography -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 
-    <!-- Peacock Courtyard Styles -->
+    <!-- Peacock CSS -->
     <link rel="stylesheet" href="assets/peacock-full-style.css">
     <link rel="stylesheet" href="assets/peacock-v2-effects.css">
     <link rel="stylesheet" href="assets/peacock-typography.css">
     <link rel="stylesheet" href="assets/peacock-polish.css">
 
     <style>
-        /* Custom Overrides & Additional Enhancements */
+        /* ==========================================
+           CSS VARIABLES
+        ========================================== */
         :root {
             --cream: #FAF6EF;
             --cream-2: #F3EADF;
+            --cream-3: #EEE3D5;
             --terracotta: #A84931;
             --terracotta-dark: #6D2E1F;
+            --terracotta-light: #C96448;
             --gold: #C9963E;
             --gold-light: #E8C07A;
+            --gold-dark: #9E7028;
             --text-dark: #2D1A16;
-            --text-light: #6F5E58;
+            --text-light: #7A6257;
             --white: #FFFFFF;
+            --shadow-warm: rgba(45,26,22,0.12);
+        }
+        body.light-theme {
+            --bg-primary: var(--cream);
+            --bg-secondary: var(--cream-2);
         }
 
+        /* ==========================================
+           BASE
+        ========================================== */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--cream);
+            margin: 0; padding: 0;
+            background: var(--cream);
             color: var(--text-dark);
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Ambient floating canvases */
+        /* ==========================================
+           FLOATING CANVASES
+        ========================================== */
         #lanterns-canvas, #petals-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0;
-            transition: opacity 1.2s ease;
+            position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 50;
+            opacity: 0; transition: opacity 1.2s ease;
         }
-        #lanterns-canvas.active, #petals-canvas.active {
-            opacity: 1;
-        }
+        #lanterns-canvas.active, #petals-canvas.active { opacity: 1; }
 
-        /* Fixed floating action buttons */
+        /* ==========================================
+           FIXED CONTROL BUTTONS
+        ========================================== */
         .fixed-controls {
-            position: fixed;
-            top: 1.2rem;
-            right: 1.2rem;
-            display: flex;
-            gap: 0.6rem;
-            z-index: 900;
+            position: fixed; top: 1rem; right: 1rem;
+            display: flex; gap: 0.55rem; z-index: 999;
         }
         .ctrl-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 1px solid rgba(201, 150, 62, 0.45);
-            background: rgba(255, 253, 248, 0.88);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            width: 42px; height: 42px; border-radius: 50%;
+            border: 1px solid rgba(201,150,62,0.45);
+            background: rgba(255,253,248,0.9);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             color: var(--terracotta);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.1);
             transition: transform 0.25s ease, background 0.25s ease;
         }
-        .ctrl-btn:hover {
-            transform: scale(1.08);
-            background: rgba(255, 255, 255, 1);
-        }
-        .ctrl-btn svg {
-            width: 20px;
-            height: 20px;
-        }
+        .ctrl-btn:hover { transform: scale(1.1); background: #fff; }
+        .ctrl-btn svg { width: 19px; height: 19px; }
 
-        /* Scratch Reveal Polish */
+        /* ==========================================
+           SHARED SECTION STYLES
+        ========================================== */
+        .section-label {
+            display: block; font-family: 'Montserrat', sans-serif;
+            font-size: 0.73rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;
+        }
+        .section-heading {
+            font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 500;
+            line-height: 1.15; color: var(--terracotta); margin: 0;
+        }
+        .text-center { text-align: center; }
+        .ornament {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0.8rem; margin-top: 1rem;
+        }
+        .ornament-line { width: 60px; height: 1px; background: var(--gold-light); opacity: 0.7; }
+        .reveal {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+        .mt-4 { margin-top: 1.5rem; }
+
+        /* ==========================================
+           HERO SECTION
+        ========================================== */
+        .hero-clouds { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+        #hero-cloud-canvas { width: 100%; height: 100%; display: block; }
+
+        /* ==========================================
+           SCRATCH REVEAL SECTION
+        ========================================== */
         #scratch-reveal-section {
             background: var(--cream);
             background-image: url("assets/scratch-section-parchment-v1.jpg");
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            padding: 5rem 1.2rem;
-        }
-        .section-label {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        .section-heading {
-            font-family: 'EB Garamond', 'Invitation Serif', Georgia, serif;
-            font-size: clamp(2.4rem, 6vw, 3.6rem);
-            font-weight: 500;
-            line-height: 1.15;
-            color: var(--terracotta);
-            margin: 0;
+            background-size: cover; background-position: center;
+            padding: 5.5rem 1.2rem; position: relative;
         }
 
-        /* Events Section Cards */
+        /* ==========================================
+           MEMORIES / GALLERY SECTION
+        ========================================== */
+        #memories-section {
+            padding: 5rem 1.5rem;
+            background: var(--cream-2);
+            background-image: url("assets/memories-floral-parchment-v2.jpg");
+            background-size: cover; background-position: center;
+            position: relative;
+        }
+        #memories-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(250,246,239,0.82); pointer-events: none;
+        }
+        #memories-section > * { position: relative; z-index: 1; }
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem; max-width: 960px; margin: 2.5rem auto 0;
+        }
+        .memory-card {
+            border-radius: 14px; overflow: hidden;
+            box-shadow: 0 8px 28px var(--shadow-warm);
+            aspect-ratio: 4/3; background: var(--cream-3);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-light); font-style: italic; font-size: 0.9rem;
+            font-family: 'EB Garamond', serif;
+            border: 1px solid rgba(201,150,62,0.25);
+        }
+        .memory-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* ==========================================
+           EVENTS / CEREMONIES SECTION
+        ========================================== */
         #events-section {
             padding: 5rem 1.2rem;
-            position: relative;
-            background: var(--cream-2);
+            background: var(--cream);
             background-image: url("assets/events-parchment-v2.png");
-            background-size: cover;
-            background-position: center;
-        }
-        .event-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 2.2rem;
-            max-width: 1040px;
-            margin: 3rem auto 0;
-            padding: 0 0.5rem;
-        }
-        .event-card {
+            background-size: cover; background-position: center;
             position: relative;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 16px 36px rgba(45, 26, 22, 0.12);
-            background: #FFF;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(201, 150, 62, 0.28);
         }
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 22px 45px rgba(45, 26, 22, 0.18);
+        #events-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(250,246,239,0.78); pointer-events: none;
         }
-        .event-card-banner {
+        #events-section > * { position: relative; z-index: 1; }
+        .event-list {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 2rem; max-width: 560px; margin: 3rem auto 0;
+        }
+        .invitation-event-card {
+            --event-ink: #6d3437; --event-gold: #a57a38;
+            position: relative; width: 100%;
+            aspect-ratio: 920/1240; overflow: hidden;
+            background: #f3eadf;
+            box-shadow: 0 28px 55px rgba(12,6,16,.28), 0 3px 12px rgba(12,6,16,.14);
+            isolation: isolate; border-radius: 4px;
+        }
+        .invitation-event-card > img {
+            position: absolute; top: -6.5%; left: -11%;
+            width: 122%; height: auto; max-width: none;
+        }
+        .event-card-copy {
+            position: absolute; z-index: 1; inset: 18% 18% 23%;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; color: var(--event-ink);
+            text-align: center; text-shadow: 0 1px 0 rgba(255,255,255,.45);
+        }
+        .event-date {
+            margin: 0; font-size: clamp(.85rem,3.7cqw,1.35rem);
+            font-family: Georgia, serif; letter-spacing: .14em; text-transform: uppercase;
+        }
+        .event-card-copy h3 {
+            margin: 4.5cqw 0 3.2cqw;
+            font: 400 clamp(2.3rem,10cqw,4.5rem)/.9 'EB Garamond', 'Invitation Serif', Georgia, serif;
+            letter-spacing: -.025em;
+        }
+        .event-ornament {
+            display: flex; width: min(35cqw,180px); align-items: center;
+            gap: 10px; margin: .4cqw 0 4.5cqw; color: var(--event-gold);
+            font-size: clamp(.45rem,1.8cqw,.75rem);
+        }
+        .event-ornament::before, .event-ornament::after {
+            width: 100%; height: 1px; content: ''; background: currentColor; opacity: .75;
+        }
+        .event-time-label {
+            font-size: clamp(.6rem,2.5cqw,.95rem); letter-spacing: .12em;
+            text-transform: uppercase; font-family: 'Montserrat', sans-serif;
+            font-weight: 600; margin: 0;
+        }
+        .event-time {
+            font-size: clamp(1.2rem,5.5cqw,2.2rem);
+            font-family: 'EB Garamond', Georgia, serif;
+            font-weight: 600; margin: 1.5cqw 0 3cqw;
+        }
+        .event-venue {
+            font-size: clamp(.6rem,2.3cqw,.9rem); font-family: 'Montserrat', sans-serif;
+        }
+        .event-venue-label {
+            display: block; text-transform: uppercase; letter-spacing: .12em;
+            font-size: .8em; opacity: .65; margin-bottom: .5cqw;
+        }
+        .event-venue-name { font-weight: 600; }
+        .event-map-link {
+            display: inline-flex; align-items: center; gap: 5px;
+            margin-top: 3cqw; color: var(--event-gold); text-decoration: none;
+            font-size: clamp(.55rem,2.2cqw,.85rem); font-family: 'Montserrat', sans-serif;
+            letter-spacing: .06em; text-transform: uppercase; font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: border-color .25s;
+        }
+        .event-map-link:hover { border-color: var(--event-gold); }
+        .event-map-link svg { width: 1.1em; height: 1.1em; }
+
+        /* ==========================================
+           WARDROBE / DRESS CODE SECTION
+        ========================================== */
+        #wardrobe-section {
+            padding: 5rem 1.5rem;
+            background: var(--cream-2);
+            background-image: url("assets/wardrobe-silk-v2.png");
+            background-size: cover; background-position: center;
             position: relative;
-            height: 190px;
-            overflow: hidden;
-            background: #2D1A16;
         }
-        .event-card-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            opacity: 0.9;
-            transition: transform 0.5s ease;
+        #wardrobe-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(243,234,223,0.88); pointer-events: none;
         }
-        .event-card:hover .event-card-banner img {
-            transform: scale(1.05);
+        #wardrobe-section > * { position: relative; z-index: 1; }
+        .wardrobe-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+            gap: 1.5rem; max-width: 880px; margin: 2.5rem auto 0;
         }
-        .event-card-banner::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 40%, rgba(20, 10, 8, 0.72) 100%);
+        .wardrobe-card {
+            background: rgba(255,255,255,0.88); border-radius: 16px;
+            padding: 2rem 1.5rem; text-align: center;
+            box-shadow: 0 8px 28px var(--shadow-warm);
+            border: 1px solid rgba(201,150,62,0.3);
+            backdrop-filter: blur(6px);
         }
-        .event-badge-time {
-            position: absolute;
-            bottom: 0.8rem;
-            left: 1rem;
-            z-index: 2;
-            color: #FFF;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            background: rgba(168, 73, 49, 0.88);
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            backdrop-filter: blur(4px);
+        .wardrobe-swatch {
+            width: 64px; height: 64px; border-radius: 50%;
+            margin: 0 auto 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 3px solid rgba(255,255,255,0.8);
         }
-        .event-card-body {
-            padding: 1.5rem 1.3rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            text-align: center;
-            background: linear-gradient(180deg, #FFFFFF 0%, #FDFCFA 100%);
+        .wardrobe-card h3 {
+            font-family: 'EB Garamond', Georgia, serif; font-size: 1.5rem;
+            color: var(--terracotta); margin: 0 0 0.5rem; font-weight: 600;
         }
-        .event-card-date {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 0.35rem;
-        }
-        .event-card-title {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.85rem;
-            color: var(--terracotta);
-            margin: 0.2rem 0 0.5rem;
-            font-weight: 600;
-            line-height: 1.15;
-        }
-        .event-card-desc {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.05rem;
-            font-style: italic;
-            color: var(--text-light);
-            margin: 0.4rem 0 1rem;
-            min-height: 2.4rem;
-            line-height: 1.35;
-        }
-        .event-card-venue {
-            margin-top: auto;
-            padding-top: 0.9rem;
-            border-top: 1px dashed rgba(201, 150, 62, 0.35);
-            font-size: 0.82rem;
-            color: var(--text-dark);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-        }
-        .event-card-venue svg {
-            width: 14px;
-            height: 14px;
-            color: var(--terracotta);
-            flex-shrink: 0;
+        .wardrobe-card p {
+            font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
+            color: var(--text-light); margin: 0; line-height: 1.5;
         }
 
-        /* Family Section */
+        /* ==========================================
+           FAMILY & CONTACTS SECTION
+        ========================================== */
         #family-section {
-            padding: 5rem 1.2rem;
+            padding: 5rem 1.5rem;
             background: var(--cream);
-            text-align: center;
-            position: relative;
+            text-align: center; position: relative;
         }
         .family-box {
-            max-width: 680px;
-            margin: 2.5rem auto 0;
-            padding: clamp(2rem, 5vw, 3.2rem) clamp(1.5rem, 5vw, 2.8rem);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(254, 250, 245, 0.9));
-            border: 1px solid rgba(201, 150, 62, 0.4);
-            border-radius: 20px;
-            box-shadow: 0 18px 45px rgba(45, 26, 22, 0.08);
-            position: relative;
+            max-width: 680px; margin: 2.5rem auto 0;
+            padding: clamp(2rem,5vw,3.2rem) clamp(1.5rem,5vw,2.8rem);
+            background: linear-gradient(135deg,rgba(255,255,255,0.96),rgba(254,250,245,0.92));
+            border: 1px solid rgba(201,150,62,0.42); border-radius: 22px;
+            box-shadow: 0 18px 50px var(--shadow-warm); position: relative;
         }
         .family-box::before {
-            content: '';
-            position: absolute;
-            inset: 8px;
-            border: 1px solid rgba(201, 150, 62, 0.2);
-            border-radius: 14px;
-            pointer-events: none;
-        }
-        .family-kicker {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.76rem;
-            letter-spacing: 0.24em;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-weight: 600;
+            content: ''; position: absolute; inset: 9px;
+            border: 1px solid rgba(201,150,62,0.22); border-radius: 16px; pointer-events: none;
         }
         .family-title {
             font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--terracotta);
-            margin: 0.5rem 0 1rem;
-            font-weight: 600;
+            font-size: clamp(2rem,5vw,2.8rem); color: var(--terracotta);
+            margin: 0.5rem 0 0.8rem; font-weight: 600;
         }
         .family-subtitle {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.25rem;
-            font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            line-height: 1.4;
+            font-family: 'EB Garamond', Georgia, serif; font-size: 1.2rem;
+            font-style: italic; color: var(--text-light); line-height: 1.5; margin: 0 0 1.5rem;
+        }
+        .from-label {
+            font-family: 'Montserrat', sans-serif; font-size: 0.72rem;
+            letter-spacing: 0.24em; text-transform: uppercase; color: var(--terracotta);
+            font-weight: 700; margin-bottom: 0.8rem; display: block;
         }
         .family-names-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
+            list-style: none; padding: 0; margin: 0 0 2rem;
+            display: flex; flex-direction: column; gap: 0.55rem;
         }
         .family-names-list li {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.35rem;
-            color: var(--text-dark);
-            font-weight: 500;
+            font-family: 'EB Garamond', Georgia, serif; font-size: 1.3rem; color: var(--text-dark);
         }
-        .family-names-list li.late {
-            color: var(--text-light);
-            font-style: italic;
-        }
-        .family-contact-block {
-            margin-top: 2.2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(201, 150, 62, 0.3);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.2rem;
+        .family-names-list li.late { color: var(--text-light); font-style: italic; }
+        .contact-row {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+            padding-top: 1.5rem; border-top: 1px solid rgba(201,150,62,0.3);
         }
         .contact-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(168, 73, 49, 0.08);
-            border: 1px solid rgba(168, 73, 49, 0.25);
-            padding: 0.55rem 1.2rem;
-            border-radius: 30px;
-            color: var(--terracotta-dark);
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(168,73,49,0.08); border: 1px solid rgba(168,73,49,0.28);
+            padding: 0.55rem 1.3rem; border-radius: 30px;
+            color: var(--terracotta-dark); text-decoration: none;
+            font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700;
             transition: all 0.25s ease;
         }
-        .contact-pill:hover {
-            background: var(--terracotta);
-            color: #FFF;
-            transform: translateY(-2px);
-        }
+        .contact-pill:hover { background: var(--terracotta); color: #fff; transform: translateY(-2px); }
+        .contact-pill svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-        /* Venue / Location Section */
+        /* ==========================================
+           VENUE & QR SECTION
+        ========================================== */
         #venue-section {
-            padding: 5rem 1.2rem;
-            background: var(--cream-2);
-            text-align: center;
-            position: relative;
+            padding: 5rem 1.5rem;
+            background: var(--cream-2); text-align: center;
         }
         .venue-card {
-            max-width: 680px;
-            margin: 2.5rem auto 0;
-            padding: 2.5rem 1.5rem;
-            background: #FFF;
-            border-radius: 20px;
-            border: 1px solid rgba(201, 150, 62, 0.35);
-            box-shadow: 0 16px 40px rgba(45, 26, 22, 0.08);
+            max-width: 700px; margin: 2.5rem auto 0;
+            background: #fff; border-radius: 22px;
+            border: 1px solid rgba(201,150,62,0.35);
+            box-shadow: 0 18px 50px var(--shadow-warm);
+            overflow: hidden;
         }
-        .venue-name {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 2.2rem;
-            color: var(--terracotta);
-            margin: 0.5rem 0;
+        .venue-card-top {
+            background: linear-gradient(135deg, #A84931 0%, #6D2E1F 100%);
+            padding: 2rem 2rem 1.5rem; color: #fff;
+        }
+        .venue-card-top h3 {
+            font-family: 'EB Garamond', Georgia, serif; font-size: 2rem;
+            margin: 0 0 0.4rem; font-weight: 600;
+        }
+        .venue-card-top p {
+            font-family: 'Montserrat', sans-serif; font-size: 0.88rem;
+            opacity: 0.88; margin: 0; line-height: 1.6;
+        }
+        .venue-card-bottom {
+            padding: 2rem; display: flex; flex-wrap: wrap;
+            align-items: center; justify-content: center; gap: 2rem;
+        }
+        .venue-qr-box {
+            display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
+        }
+        .venue-qr-placeholder {
+            width: 140px; height: 140px; border-radius: 14px;
+            border: 2px solid rgba(201,150,62,0.45);
+            background: var(--cream-2); display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 0.4rem;
+            color: var(--text-light); font-size: 0.78rem;
+            font-family: 'Montserrat', sans-serif; text-align: center; padding: 1rem;
+        }
+        .venue-qr-placeholder svg { width: 36px; height: 36px; color: var(--gold); }
+        .venue-qr-label {
+            font-family: 'Montserrat', sans-serif; font-size: 0.72rem;
+            text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-light);
             font-weight: 600;
         }
-        .venue-address {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            color: var(--text-light);
-            max-width: 480px;
-            margin: 0 auto 1.8rem;
-            line-height: 1.6;
-        }
+        .venue-actions { display: flex; flex-direction: column; gap: 0.8rem; }
         .map-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: linear-gradient(135deg, #A84931 0%, #853723 100%);
-            color: #FFF;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 0.85rem 2rem;
-            border-radius: 50px;
-            box-shadow: 0 8px 24px rgba(168, 73, 49, 0.32);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            background: linear-gradient(135deg,#A84931 0%,#853723 100%);
+            color: #fff; text-decoration: none;
+            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.92rem;
+            padding: 0.8rem 1.8rem; border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(168,73,49,0.32);
+            transition: transform 0.25s, box-shadow 0.25s;
         }
-        .map-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(168, 73, 49, 0.42);
+        .map-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(168,73,49,0.42); }
+        .map-btn-outline {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            background: transparent; border: 1.5px solid var(--terracotta);
+            color: var(--terracotta); text-decoration: none;
+            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.88rem;
+            padding: 0.75rem 1.6rem; border-radius: 50px;
+            transition: all 0.25s;
+        }
+        .map-btn-outline:hover { background: var(--terracotta); color: #fff; }
+
+        /* ==========================================
+           RSVP SECTION
+        ========================================== */
+        #rsvp-section {
+            padding: 5rem 1.5rem;
+            background: var(--cream);
+            background-image: url("assets/rsvp-floral-parchment-v1.jpg");
+            background-size: cover; background-position: center;
+            position: relative;
+        }
+        #rsvp-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(250,246,239,0.88); pointer-events: none;
+        }
+        #rsvp-section > * { position: relative; z-index: 1; }
+        .rsvp-card {
+            max-width: 540px; margin: 2.5rem auto 0;
+            background: rgba(255,255,255,0.94); border-radius: 22px;
+            border: 1px solid rgba(201,150,62,0.35);
+            box-shadow: 0 18px 50px var(--shadow-warm);
+            padding: 2.5rem 2rem; text-align: center;
+            backdrop-filter: blur(8px);
+        }
+        .rsvp-subtitle {
+            font-family: 'EB Garamond', Georgia, serif; font-size: 1.15rem;
+            font-style: italic; color: var(--text-light); margin: 0 0 2rem; line-height: 1.5;
+        }
+        .rsvp-whatsapp-btn {
+            display: inline-flex; align-items: center; gap: 0.7rem;
+            background: #25D366; color: #fff;
+            font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem;
+            padding: 1rem 2.2rem; border-radius: 50px; text-decoration: none;
+            box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .rsvp-whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37,211,102,0.45); }
+        .rsvp-whatsapp-btn svg { width: 22px; height: 22px; }
+        .rsvp-note {
+            margin-top: 1.2rem; font-size: 0.83rem; color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* Footer Section */
+        /* ==========================================
+           FOOTER SECTION
+        ========================================== */
         #footer-section {
             background: #14080B;
             background-image: url("assets/footer-burgundy-floral-v1.jpg");
-            background-size: cover;
-            background-position: center;
-            color: #F8EDE3;
-            padding: 4.5rem 1.5rem 3.5rem;
-            text-align: center;
-            position: relative;
+            background-size: cover; background-position: center;
+            color: #F8EDE3; padding: 5rem 1.5rem 3.5rem;
+            text-align: center; position: relative;
         }
         #footer-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(16, 7, 10, 0.85);
+            content: ''; position: absolute; inset: 0;
+            background: rgba(16,7,10,0.82);
         }
-        .footer-content {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .footer-content { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
         .footer-couple {
             font-family: 'Pinyon Script', cursive;
-            font-size: clamp(3rem, 7vw, 4.2rem);
-            color: var(--gold-light);
-            margin: 0;
-            line-height: 1.1;
+            font-size: clamp(3rem,7vw,4.5rem); color: var(--gold-light); margin: 0; line-height: 1.1;
         }
+        .footer-sep {
+            display: flex; align-items: center; justify-content: center;
+            gap: 1rem; margin: 1.5rem 0; opacity: 0.55;
+        }
+        .footer-sep-line { width: 60px; height: 1px; background: var(--gold-light); }
         .footer-quote {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.25rem;
-            font-style: italic;
-            opacity: 0.85;
-            margin: 1.4rem 0 2rem;
-            line-height: 1.5;
+            font-family: 'EB Garamond', Georgia, serif; font-size: 1.2rem;
+            font-style: italic; opacity: 0.88; line-height: 1.6; margin: 0 0 1.8rem;
         }
         .footer-date-venue {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.82rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--gold);
+            font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+            letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+        }
+        .footer-hashtag {
+            margin-top: 1.2rem; font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem; letter-spacing: 0.1em; opacity: 0.6;
         }
 
-        /* Reveal transitions */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+        @media (max-width: 600px) {
+            .event-list { padding: 0 0.3rem; }
+            .venue-card-bottom { gap: 1.5rem; }
+            .wardrobe-grid { grid-template-columns: 1fr 1fr; }
         }
-        .reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-delay-1 { transition-delay: 0.15s; }
-        .reveal-delay-2 { transition-delay: 0.3s; }
     </style>
 </head>
 <body class="light-theme">
 
-    <!-- Floating Canvases -->
+    <!-- Floating canvases -->
     <canvas id="lanterns-canvas"></canvas>
     <canvas id="petals-canvas"></canvas>
 
-    <!-- Audio Player -->
+    <!-- Audio -->
     <audio id="bg-audio" loop preload="none">
         <source src="assets/wedding-song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Fixed Controls (Theme & Audio) -->
+    <!-- Fixed controls -->
     <div class="fixed-controls">
-        <button id="theme-btn" class="ctrl-btn" title="Toggle theme" aria-label="Toggle theme">
-            <svg id="theme-icon-moon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <button id="theme-btn" class="ctrl-btn" title="Toggle theme" aria-label="Toggle theme" aria-pressed="true">
+            <svg id="theme-icon-moon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="display:none">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A8.5 8.5 0 1111.2 3a6.6 6.6 0 009.8 9.8z"/>
             </svg>
-            <svg id="theme-icon-sun" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="display:none">
+            <svg id="theme-icon-sun" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="4"/>
                 <path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>
             </svg>
         </button>
-        <button id="audio-btn" class="ctrl-btn" title="Toggle music" aria-label="Toggle background music">
+        <button id="audio-btn" class="ctrl-btn" title="Toggle music" aria-label="Toggle music">
             <svg id="icon-on" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="display:none">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/>
             </svg>
@@ -486,7 +535,9 @@
         </button>
     </div>
 
-    <!-- 1️⃣ INTRO ENTRY GATE (Cloned from Peacock Courtyard) -->
+    <!-- ═══════════════════════════════════════════
+         SECTION 1: INTRO ENTRY GATE
+    ═══════════════════════════════════════════ -->
     <div id="entry-gate">
         <video id="entry-video" playsinline webkit-playsinline muted preload="auto" disablePictureInPicture>
             <source src="assets/intro-video.mp4" type="video/mp4">
@@ -497,23 +548,27 @@
                 <div class="recipient-flourish" aria-hidden="true">&#10022;</div>
                 <p class="recipient-dear">Especially for</p>
                 <strong class="recipient-name" id="recipient-name">Our Dear Family &amp; Friends</strong>
-                <p class="recipient-message">to celebrate the wedding of<span class="recipient-couple">Priya &amp; Umesh</span></p>
+                <p class="recipient-message">to celebrate the wedding of<span class="recipient-couple">Ankush &amp; Muskan</span></p>
             </div>
-            <button class="open-invitation" id="open-invitation" type="button">Tap to open</button>
+            <button class="open-invitation" id="open-invitation" type="button">✦ Tap to open ✦</button>
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT (hidden until gate opens) -->
     <div id="main-content">
 
-        <!-- 2️⃣ HERO SECTION (Cloned from Peacock Courtyard) -->
+        <!-- ═══════════════════════════════════════════
+             SECTION 2: HERO
+        ═══════════════════════════════════════════ -->
         <section id="hero">
             <div class="hero-video-crop" aria-hidden="true">
                 <video id="hero-bg-video" autoplay loop muted playsinline preload="metadata">
                     <source src="assets/hero-butterflies-flowers.mp4" type="video/mp4">
                 </video>
             </div>
-            <div class="hero-clouds" aria-hidden="true"><canvas id="hero-cloud-canvas"></canvas></div>
+            <div class="hero-clouds" aria-hidden="true">
+                <canvas id="hero-cloud-canvas"></canvas>
+            </div>
 
             <div class="hero-frame"><span></span></div>
 
@@ -524,7 +579,6 @@
                 <div class="card-corner br"></div>
 
                 <img class="ganesh-icon" src="assets/vinayak.png" alt="Shri Vinayak" loading="eager">
-                
                 <p class="ganesh-invocation" lang="hi">॥ श्री गणेशाय नमः ॥</p>
 
                 <p class="blessings-text">
@@ -534,35 +588,43 @@
                     <span class="invitation-close">Join us as we celebrate the beginning of forever for</span>
                 </p>
 
-                <div class="couple-block" data-person="bride">
-                    <span class="couple-name">Priya</span>
-                    <p class="family-line">(Muskan)</p>
+                <div class="couple-block" data-person="groom">
+                    <span class="couple-name">Umesh</span>
+                    <p class="family-line">(Ankush)</p>
                 </div>
 
                 <div class="ampersand-wrap">
                     <div class="ampersand-line"></div>
-                    <span class="ampersand" aria-label="and"><span class="ampersand-glyph" aria-hidden="true">&amp;</span></span>
+                    <span class="ampersand" aria-label="and">
+                        <span class="ampersand-glyph" aria-hidden="true">&amp;</span>
+                    </span>
                     <div class="ampersand-line"></div>
                 </div>
 
-                <div class="couple-block" data-person="groom">
-                    <span class="couple-name">Umesh</span>
-                    <p class="family-line">(Ankush)</p>
+                <div class="couple-block" data-person="bride">
+                    <span class="couple-name">Priya</span>
+                    <p class="family-line">(Muskan)</p>
                 </div>
             </div>
 
             <div class="scroll-cue">
                 <p>Scroll</p>
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
             </div>
         </section>
 
-        <!-- 3️⃣ SCRATCH REVEAL SECTION (Cloned from Peacock Courtyard with 3 Hearts) -->
+        <!-- ═══════════════════════════════════════════
+             SECTION 3: SCRATCH REVEAL (3 Hearts)
+        ═══════════════════════════════════════════ -->
         <section id="scratch-reveal-section">
             <div class="text-center reveal">
                 <span class="section-label">Save The Date</span>
-                <h2 class="section-heading" style="color:var(--terracotta)">Reveal Our<br>Big Day</h2>
-                <p class="reveal reveal-delay-2 mt-4" style="font-style:italic;color:var(--text-light);font-size:1.15rem;margin-bottom:1.5rem;">Scratch all 3 hearts to reveal</p>
+                <h2 class="section-heading">Reveal Our<br>Big Day</h2>
+                <p class="reveal reveal-delay-2 mt-4" style="font-style:italic;color:var(--text-light);font-size:1.1rem;margin-bottom:1.5rem;">
+                    Scratch all 3 hearts to reveal the date
+                </p>
             </div>
 
             <div class="hearts-row reveal reveal-delay-2" id="heartsRow">
@@ -573,7 +635,6 @@
                     </div>
                     <canvas id="scratchCanvas1" class="scratch-canvas"></canvas>
                 </div>
-
                 <div class="heart-container" id="heartContainer2">
                     <div class="hidden-content">
                         <span class="label">MONTH</span>
@@ -581,7 +642,6 @@
                     </div>
                     <canvas id="scratchCanvas2" class="scratch-canvas"></canvas>
                 </div>
-
                 <div class="heart-container" id="heartContainer3">
                     <div class="hidden-content">
                         <span class="label">YEAR</span>
@@ -590,806 +650,736 @@
                     <canvas id="scratchCanvas3" class="scratch-canvas"></canvas>
                 </div>
             </div>
-            
+
             <div class="text-center" style="margin-top:2rem;">
                 <div id="surpriseMessage" class="surprise-message">
-                    The start of a beautiful journey...
+                    Ankush weds Muskan ✦
                 </div>
-                
-                <div id="countdown-container" class="countdown-container" role="timer" aria-label="Time until Priya and Umesh's wedding">
+                <div id="countdown-container" class="countdown-container" role="timer" aria-label="Time until Ankush and Muskan's wedding">
                     <div class="cd-item"><span id="cd-days">00</span><small>Days</small></div>
                     <div class="cd-item"><span id="cd-hours">00</span><small>Hours</small></div>
                     <div class="cd-item"><span id="cd-mins">00</span><small>Minutes</small></div>
                     <div class="cd-item"><span id="cd-secs">00</span><small>Seconds</small></div>
-                    <p class="countdown-complete" id="countdown-complete" hidden>We're celebrating!</p>
+                    <p class="countdown-complete" id="countdown-complete" hidden>We're celebrating! 🎉</p>
                 </div>
-                <a id="add-to-calendar" class="calendar-button" href="#" target="_blank" rel="noopener noreferrer">Add to Calendar <span aria-hidden="true">↗</span></a>
-            </div>
-        </section>
-
-        <!-- WEDDING CEREMONIES (All 8 Functions) -->
-        <section id="events-section" aria-labelledby="events-heading">
-            <div class="text-center reveal">
-                <span class="section-label">The Sacred Itinerary</span>
-                <h2 id="events-heading" class="section-heading" style="color:var(--terracotta)">Wedding<br>Ceremonies</h2>
-                <div class="ornament mt-4"><div class="ornament-line rev"></div><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" style="color:var(--gold)"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg><div class="ornament-line"></div></div>
-            </div>
-
-            <div class="event-grid">
-                <!-- 1. Vinayak Sthapana -->
-                <article class="event-card reveal">
-                    <div class="event-card-banner">
-                        <img src="assets/vinayak-background-D0xnapJb.jpg" alt="Vinayak Sthapana" loading="lazy">
-                        <span class="event-badge-time">7:00 AM</span>
-                    </div>
-                    <div class="event-card-body">
-                        <p class="event-card-date">Thursday, 19 November 2026</p>
-                        <h3 class="event-card-title">Vinayak Sthapana</h3>
-                        <p class="event-card-desc">Inviting Lord Ganesha to bless every moment of the celebrations.</p>
-                        <div class="event-card-venue">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            <span>Aashika Resort, Bhilwara</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 2. Kalash -->
-                <article class="event-card reveal">
-                    <div class="event-card-banner">
-                        <img src="assets/kalash-background-BvLgUxFS.jpg" alt="Kalash" loading="lazy">
-                        <span class="event-badge-time">9:15 AM</span>
-                    </div>
-                    <div class="event-card-body">
-                        <p class="event-card-date">Thursday, 19 November 2026</p>
-                        <h3 class="event-card-title">Kalash</h3>
-                        <p class="event-card-desc">The sacred kalash, carried with devotion and prayers.</p>
-                        <div class="event-card-venue">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            <span>Aashika Resort, Bhilwara</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 3. Carnival (Haldi) -->
-                <article class="event-card reveal">
-                    <div class="event-card-banner">
-                        <img src="assets/haldi-background-Crx3sXq8.jpg" alt="Carnival Haldi" loading="lazy">
-                        <span class="event-badge-time">11:00 AM</span>
-                    </div>
-                    <div class="event-card-body">
-                        <p class="event-card-date">Thursday, 19 November 2026</p>
-                        <h3 class="event-card-title">Carnival (Haldi)</h3>
-                        <p class="event-card-desc">A splash of yellow, laughter and love.</p>
-                        <div class="event-card-venue">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            <span>Aashika Resort, Bhilwara</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 4. Mayra -->
-                <article class="event-card reveal">
-                    <div class="event-card-banner">
-                        <img src="assets/feast-background-B_IFQzoV.jpg" alt="Mayra" loading="lazy">
-                        <span class="event-badge-time">2:30 PM</span>
-                    </div>
-                    <div class="event-card-body">
-                        <p class="event-card-date">Thursday, 19 November 2026</p>
-                        <h3 class="event-card-title">Mayra</h3>
-                        <p class="event-card-desc">Cherished maternal blessings and celebratory traditions.</p>
-                        <div class="event-card-venue">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            <span>Aashika Resort, Bhilwara</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 5. Ring Ceremony -->
-                <article class="event-card reveal">
-                    <div class="event-card-banner">
-                        <img src="assets/ring-background-7TFPF1Qm.jpg" alt="Ring Ceremony" loading="lazy">
-                        <span class="event-badge-time">9:15 AM</span>
-                    </div>
-                    <div class="event-card-body">
-                        <p class="event-card-date">Friday, 20 November 2026</p>
-                        <h3 class="event-card-title">Ring Ceremony</h3>
-                        <p class="event-card-desc">Two rings, one promise.</p>
-                        <div class="event-card-venue">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            <span>Aashika Resort, Bhilwara</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 6. Nikasi -->
-                <article class="event-card reveal">
-                    <div class="event-card-banner">
-                        <img src="assets/baraat-background-BiyzPZWC.jpg" alt="Nikasi" loading="lazy">
-                        <span class="event-badge-time">1:30 PM</span>
-                    </div>
-                    <div class="event-card-body">
-                        <p class="event-card-date">Friday, 20 November 2026</p>
-                        <h3 class="event-card-title">Nikasi</h3>
-                        <p class="event-card-desc">An afternoon procession of joy, music and togetherness.</p>
-                        <div class="event-card-venue">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            <span>Aashika Resort, Bhilwara</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 7. Reception -->
-                <article class="event-card reveal">
-                    <div class="event-card-banner">
-                        <img src="assets/sangeet-background-DkOQXuJP.jpg" alt="Reception" loading="lazy">
-                        <span class="event-badge-time">6:00 PM</span>
-                    </div>
-                    <div class="event-card-body">
-                        <p class="event-card-date">Friday, 20 November 2026</p>
-                        <h3 class="event-card-title">Reception</h3>
-                        <p class="event-card-desc">Join us for an evening of celebration and a feast with our loved ones.</p>
-                        <div class="event-card-venue">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            <span>Aashika Resort, Bhilwara</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 8. Shubh Vivah -->
-                <article class="event-card reveal">
-                    <div class="event-card-banner">
-                        <img src="assets/phera-background-B_oNzNCr.jpg" alt="Shubh Vivah" loading="lazy">
-                        <span class="event-badge-time">11:00 PM</span>
-                    </div>
-                    <div class="event-card-body">
-                        <p class="event-card-date">Friday, 20 November 2026</p>
-                        <h3 class="event-card-title">Shubh Vivah</h3>
-                        <p class="event-card-desc">The sacred pheras — two hearts, two families, one beautiful beginning.</p>
-                        <div class="event-card-venue">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            <span>Aashika Resort, Bhilwara</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- OUR FAMILY SECTION -->
-        <section id="family-section">
-            <div class="text-center reveal">
-                <span class="family-kicker">With Love &amp; Blessings</span>
-                <h2 class="section-heading" style="color:var(--terracotta)">Our Family</h2>
-            </div>
-            <div class="family-box reveal reveal-delay-1">
-                <h3 class="family-title">Jain's Family</h3>
-                <p class="family-subtitle">Join us as we celebrate love, laughter, and the beginning of forever.<br>Eagerly awaiting the pleasure of your gracious presence.</p>
-                
-                <p class="family-kicker" style="color:var(--terracotta);margin-bottom:0.8rem;">FROM</p>
-                <ul class="family-names-list">
-                    <li class="late">Late - Jagdish Parsad Jain</li>
-                    <li class="late">Late - Yogesh Jain</li>
-                    <li>Rajendra Kumar Jain</li>
-                    <li>Piyush Jain</li>
-                    <li>Shubham Jain</li>
-                </ul>
-
-                <div class="family-contact-block">
-                    <a href="tel:+919414114190" class="contact-pill">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                        <span>94141-14190</span>
-                    </a>
-                    <a href="tel:+917014152766" class="contact-pill">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                        <span>70141-52766</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- VENUE & DIRECTIONS SECTION -->
-        <section id="venue-section">
-            <div class="text-center reveal">
-                <span class="section-label">Wedding Destination</span>
-                <h2 class="section-heading" style="color:var(--terracotta)">Venue &amp; Directions</h2>
-            </div>
-            <div class="venue-card reveal reveal-delay-1">
-                <h3 class="venue-name">Aashika Resort</h3>
-                <p class="venue-address">
-                    Behind Sukhadia Stadium, Atun Road,<br>
-                    Bhilwara, Rajasthan 311001
-                </p>
-                <a href="https://maps.google.com/?q=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer" class="map-btn">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <span>View on Google Maps</span>
+                <a id="add-to-calendar" class="calendar-button" href="#" target="_blank" rel="noopener noreferrer">
+                    Add to Calendar <span aria-hidden="true">↗</span>
                 </a>
             </div>
         </section>
 
-        <!-- FOOTER SECTION -->
+        <!-- ═══════════════════════════════════════════
+             SECTION 4: MEMORIES / PHOTOS
+        ═══════════════════════════════════════════ -->
+        <section id="memories-section">
+            <div class="text-center reveal">
+                <span class="section-label">Our Story</span>
+                <h2 class="section-heading">Cherished<br>Moments</h2>
+                <div class="ornament">
+                    <div class="ornament-line"></div>
+                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="color:var(--gold)">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <div class="ornament-line"></div>
+                </div>
+                <p class="reveal reveal-delay-2 mt-4" style="font-style:italic;color:var(--text-light);font-size:1.05rem;">
+                    Every picture tells our love story
+                </p>
+            </div>
+            <div class="memories-grid reveal reveal-delay-2">
+                <div class="memory-card">
+                    <span>Photo coming soon...</span>
+                </div>
+                <div class="memory-card">
+                    <span>Photo coming soon...</span>
+                </div>
+                <div class="memory-card">
+                    <span>Photo coming soon...</span>
+                </div>
+                <div class="memory-card">
+                    <span>Photo coming soon...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION 5: WEDDING CEREMONIES (8 events)
+        ═══════════════════════════════════════════ -->
+        <section id="events-section" aria-labelledby="events-heading">
+            <div class="text-center reveal" style="margin-bottom:3rem;">
+                <span class="section-label">The Celebration Unfolds</span>
+                <h2 id="events-heading" class="section-heading">Wedding<br>Ceremonies</h2>
+                <div class="ornament mt-4">
+                    <div class="ornament-line rev"></div>
+                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="color:var(--gold)">
+                        <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+                    </svg>
+                    <div class="ornament-line"></div>
+                </div>
+            </div>
+
+            <div class="event-list">
+                <!-- 1. Vinayak Sthapana -->
+                <article class="invitation-event-card invitation-event-card--mehendi reveal" aria-label="Vinayak Sthapana, November 19 2026, 7:00 AM">
+                    <img src="assets/vinayak-background-D0xnapJb.jpg" alt="" loading="lazy">
+                    <div class="event-card-copy">
+                        <p class="event-date">Thursday, 19 November 2026</p>
+                        <h3>Vinayak Sthapana</h3>
+                        <span class="event-ornament" aria-hidden="true">◆</span>
+                        <p class="event-time-label">Time</p>
+                        <p class="event-time">7:00 AM</p>
+                        <p class="event-venue"><span class="event-venue-label">Venue</span><span class="event-venue-name">Aashika Resort, Bhilwara</span></p>
+                        <a class="event-map-link" href="https://maps.google.com/?q=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer">
+                            <span class="event-map-label">View on Maps</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 2. Kalash -->
+                <article class="invitation-event-card reveal" aria-label="Kalash, November 19 2026, 9:15 AM">
+                    <img src="assets/kalash-background-BvLgUxFS.jpg" alt="" loading="lazy">
+                    <div class="event-card-copy">
+                        <p class="event-date">Thursday, 19 November 2026</p>
+                        <h3>Kalash</h3>
+                        <span class="event-ornament" aria-hidden="true">◆</span>
+                        <p class="event-time-label">Time</p>
+                        <p class="event-time">9:15 AM</p>
+                        <p class="event-venue"><span class="event-venue-label">Venue</span><span class="event-venue-name">Aashika Resort, Bhilwara</span></p>
+                        <a class="event-map-link" href="https://maps.google.com/?q=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer">
+                            <span class="event-map-label">View on Maps</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 3. Carnival (Haldi) -->
+                <article class="invitation-event-card invitation-event-card--haldi reveal" aria-label="Carnival Haldi, November 19 2026, 11:00 AM">
+                    <img src="assets/haldi-background-Crx3sXq8.jpg" alt="" loading="lazy">
+                    <div class="event-card-copy">
+                        <p class="event-date">Thursday, 19 November 2026</p>
+                        <h3>Carnival (Haldi)</h3>
+                        <span class="event-ornament" aria-hidden="true">◆</span>
+                        <p class="event-time-label">Time</p>
+                        <p class="event-time">11:00 AM</p>
+                        <p class="event-venue"><span class="event-venue-label">Venue</span><span class="event-venue-name">Aashika Resort, Bhilwara</span></p>
+                        <a class="event-map-link" href="https://maps.google.com/?q=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer">
+                            <span class="event-map-label">View on Maps</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 4. Mayra -->
+                <article class="invitation-event-card reveal" aria-label="Mayra, November 19 2026, 2:30 PM">
+                    <img src="assets/feast-background-B_IFQzoV.jpg" alt="" loading="lazy">
+                    <div class="event-card-copy">
+                        <p class="event-date">Thursday, 19 November 2026</p>
+                        <h3>Mayra</h3>
+                        <span class="event-ornament" aria-hidden="true">◆</span>
+                        <p class="event-time-label">Time</p>
+                        <p class="event-time">2:30 PM</p>
+                        <p class="event-venue"><span class="event-venue-label">Venue</span><span class="event-venue-name">Aashika Resort, Bhilwara</span></p>
+                        <a class="event-map-link" href="https://maps.google.com/?q=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer">
+                            <span class="event-map-label">View on Maps</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 5. Ring Ceremony -->
+                <article class="invitation-event-card reveal" aria-label="Ring Ceremony, November 20 2026, 9:15 AM">
+                    <img src="assets/ring-background-7TFPF1Qm.jpg" alt="" loading="lazy">
+                    <div class="event-card-copy">
+                        <p class="event-date">Friday, 20 November 2026</p>
+                        <h3>Ring Ceremony</h3>
+                        <span class="event-ornament" aria-hidden="true">◆</span>
+                        <p class="event-time-label">Time</p>
+                        <p class="event-time">9:15 AM</p>
+                        <p class="event-venue"><span class="event-venue-label">Venue</span><span class="event-venue-name">Aashika Resort, Bhilwara</span></p>
+                        <a class="event-map-link" href="https://maps.google.com/?q=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer">
+                            <span class="event-map-label">View on Maps</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 6. Nikasi -->
+                <article class="invitation-event-card reveal" aria-label="Nikasi, November 20 2026, 1:30 PM">
+                    <img src="assets/baraat-background-BiyzPZWC.jpg" alt="" loading="lazy">
+                    <div class="event-card-copy">
+                        <p class="event-date">Friday, 20 November 2026</p>
+                        <h3>Nikasi</h3>
+                        <span class="event-ornament" aria-hidden="true">◆</span>
+                        <p class="event-time-label">Time</p>
+                        <p class="event-time">1:30 PM</p>
+                        <p class="event-venue"><span class="event-venue-label">Venue</span><span class="event-venue-name">Aashika Resort, Bhilwara</span></p>
+                        <a class="event-map-link" href="https://maps.google.com/?q=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer">
+                            <span class="event-map-label">View on Maps</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 7. Reception -->
+                <article class="invitation-event-card reveal" aria-label="Reception, November 20 2026, 6:00 PM">
+                    <img src="assets/sangeet-background-DkOQXuJP.jpg" alt="" loading="lazy">
+                    <div class="event-card-copy">
+                        <p class="event-date">Friday, 20 November 2026</p>
+                        <h3>Reception</h3>
+                        <span class="event-ornament" aria-hidden="true">◆</span>
+                        <p class="event-time-label">Time</p>
+                        <p class="event-time">6:00 PM</p>
+                        <p class="event-venue"><span class="event-venue-label">Venue</span><span class="event-venue-name">Aashika Resort, Bhilwara</span></p>
+                        <a class="event-map-link" href="https://maps.google.com/?q=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer">
+                            <span class="event-map-label">View on Maps</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 8. Shubh Vivah -->
+                <article class="invitation-event-card reveal" aria-label="Shubh Vivah, November 20 2026, 11:00 PM">
+                    <img src="assets/phera-background-B_oNzNCr.jpg" alt="" loading="lazy">
+                    <div class="event-card-copy">
+                        <p class="event-date">Friday, 20 November 2026</p>
+                        <h3>Shubh Vivah</h3>
+                        <span class="event-ornament" aria-hidden="true">◆</span>
+                        <p class="event-time-label">Time</p>
+                        <p class="event-time">11:00 PM</p>
+                        <p class="event-venue"><span class="event-venue-label">Venue</span><span class="event-venue-name">Aashika Resort, Bhilwara</span></p>
+                        <a class="event-map-link" href="https://maps.google.com/?q=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer">
+                            <span class="event-map-label">View on Maps</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION 6: DRESS CODE / WARDROBE
+        ═══════════════════════════════════════════ -->
+        <section id="wardrobe-section">
+            <div class="text-center reveal">
+                <span class="section-label">Dress Code</span>
+                <h2 class="section-heading">What to Wear</h2>
+                <p class="reveal reveal-delay-1 mt-4" style="font-style:italic;color:var(--text-light);font-size:1.05rem;">
+                    Come dressed in the spirit of celebration
+                </p>
+            </div>
+            <div class="wardrobe-grid reveal reveal-delay-2">
+                <div class="wardrobe-card">
+                    <div class="wardrobe-swatch" style="background: linear-gradient(135deg,#A84931,#C96448);"></div>
+                    <h3>Haldi Day</h3>
+                    <p>19 November · Shades of Yellow, Turmeric &amp; White</p>
+                </div>
+                <div class="wardrobe-card">
+                    <div class="wardrobe-swatch" style="background: linear-gradient(135deg,#C9963E,#E8C07A);"></div>
+                    <h3>Ring Ceremony</h3>
+                    <p>20 November · Royal Pastels &amp; Gold Tones</p>
+                </div>
+                <div class="wardrobe-card">
+                    <div class="wardrobe-swatch" style="background: linear-gradient(135deg,#6D2E1F,#A84931);"></div>
+                    <h3>Reception</h3>
+                    <p>20 November Evening · Festive &amp; Formal</p>
+                </div>
+                <div class="wardrobe-card">
+                    <div class="wardrobe-swatch" style="background: linear-gradient(135deg,#2D1A16,#6D2E1F);"></div>
+                    <h3>Shubh Vivah</h3>
+                    <p>20 November Night · Traditional Ethnic Wear</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION 7: OUR FAMILY
+        ═══════════════════════════════════════════ -->
+        <section id="family-section">
+            <div class="text-center reveal">
+                <span class="section-label">With Love &amp; Blessings</span>
+                <h2 class="section-heading">Our Family</h2>
+            </div>
+            <div class="family-box reveal reveal-delay-1">
+                <h3 class="family-title">Jain's Family</h3>
+                <p class="family-subtitle">
+                    Join us as we celebrate love, laughter, and the beginning of forever.<br>
+                    Eagerly awaiting the pleasure of your gracious presence.
+                </p>
+                <span class="from-label">FROM</span>
+                <ul class="family-names-list">
+                    <li class="late">Late Jagdish Parsad Jain</li>
+                    <li class="late">Late Yogesh Jain</li>
+                    <li>Rajendra Kumar Jain</li>
+                    <li>Piyush Jain</li>
+                    <li>Shubham Jain</li>
+                </ul>
+                <div class="contact-row">
+                    <a href="tel:+919414114190" class="contact-pill">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        94141-14190
+                    </a>
+                    <a href="tel:+917014152766" class="contact-pill">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        70141-52766
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION 8: VENUE + QR CODE
+        ═══════════════════════════════════════════ -->
+        <section id="venue-section">
+            <div class="text-center reveal">
+                <span class="section-label">Wedding Destination</span>
+                <h2 class="section-heading">Venue &amp;<br>Directions</h2>
+            </div>
+            <div class="venue-card reveal reveal-delay-1">
+                <div class="venue-card-top">
+                    <h3>Aashika Resort</h3>
+                    <p>Behind Sukhadia Stadium, Atun Road,<br>Bhilwara, Rajasthan 311001</p>
+                </div>
+                <div class="venue-card-bottom">
+                    <div class="venue-qr-box">
+                        <div class="venue-qr-placeholder" id="venue-qr-container">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+                                <rect x="14" y="14" width="3" height="3"/><rect x="19" y="14" width="2" height="2"/><rect x="14" y="19" width="2" height="2"/><rect x="19" y="19" width="2" height="2"/>
+                                <rect x="5" y="5" width="3" height="3" fill="currentColor"/><rect x="16" y="5" width="3" height="3" fill="currentColor"/><rect x="5" y="16" width="3" height="3" fill="currentColor"/>
+                            </svg>
+                            <span>QR Code<br>for Map</span>
+                        </div>
+                        <p class="venue-qr-label">Scan to Navigate</p>
+                    </div>
+                    <div class="venue-actions">
+                        <a href="https://maps.google.com/?q=Aashika+Resort+Behind+Sukhadia+Stadium+Bhilwara" target="_blank" rel="noopener noreferrer" class="map-btn">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Open in Google Maps
+                        </a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Aashika+Resort+Bhilwara" target="_blank" rel="noopener noreferrer" class="map-btn-outline">
+                            <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 12h18M12 3l9 9-9 9"/></svg>
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION 9: RSVP
+        ═══════════════════════════════════════════ -->
+        <section id="rsvp-section">
+            <div class="text-center reveal">
+                <span class="section-label">Kindly Confirm</span>
+                <h2 class="section-heading">RSVP</h2>
+            </div>
+            <div class="rsvp-card reveal reveal-delay-1">
+                <p class="rsvp-subtitle">
+                    Your presence would be the greatest gift.<br>
+                    Please let us know you're joining us on this joyful day.
+                </p>
+                <a href="https://wa.me/919414114190?text=Hi%2C+I+am+confirming+my+attendance+for+Ankush+%26+Muskan's+wedding+on+20+November+2026+at+Aashika+Resort%2C+Bhilwara." target="_blank" rel="noopener noreferrer" class="rsvp-whatsapp-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Confirm on WhatsApp
+                </a>
+                <p class="rsvp-note">Or call us at <strong>94141-14190</strong> · <strong>70141-52766</strong></p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             SECTION 10: FOOTER
+        ═══════════════════════════════════════════ -->
         <section id="footer-section">
             <div class="footer-content reveal">
-                <h3 class="footer-couple">Priya &amp; Umesh</h3>
-                <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.5rem;opacity:0.6;">
-                    <div style="height:1px;width:60px;background:var(--gold-light);"></div>
+                <h3 class="footer-couple">Ankush &amp; Muskan</h3>
+                <div class="footer-sep">
+                    <div class="footer-sep-line"></div>
                     <span style="color:var(--gold-light);font-size:1.1rem;">♥</span>
-                    <div style="height:1px;width:60px;background:var(--gold-light);"></div>
+                    <div class="footer-sep-line"></div>
                 </div>
                 <p class="footer-quote">
                     Two hearts, two families, one sacred bond.<br>
-                    Thank you for blessing our union.
+                    Thank you for blessing our union with your presence.
                 </p>
                 <p class="footer-date-venue">
                     20 November 2026 · Aashika Resort, Bhilwara
                 </p>
+                <p class="footer-hashtag">#AnkushWedMuskan</p>
             </div>
         </section>
 
-    </div>
+    </div><!-- /main-content -->
 
-    <!-- Scripts -->
+    <!-- ═══════════════════════════════════════════
+         SCRIPTS
+    ═══════════════════════════════════════════ -->
     <script src="assets/canvas-confetti.min.js"></script>
     <script src="assets/v2-effects.js"></script>
 
     <script>
-    /* ================================================================
-       CONFIG & GLOBALS
-    ================================================================ */
-    window.siteWeddingDate = '2026-11-20T23:00:00+05:30';
+    /* ── CONFIG ─────────────────────────────── */
+    window.siteWeddingDate  = '2026-11-20T23:00:00+05:30';
     window.siteWeddingVenue = 'Aashika Resort, Bhilwara';
     window.siteWeddingMapUrl = 'https://maps.google.com/?q=Aashika+Resort+Bhilwara';
     window.WEDDING_CONFIG = {
-        couple: {
-            partnerOne: 'Priya (Muskan)',
-            partnerTwo: 'Umesh (Ankush)'
-        }
+        couple: { partnerOne: 'Ankush', partnerTwo: 'Muskan' }
     };
 
-    /* ================================================================
-       FLOATING LANTERNS CANVAS
-    ================================================================ */
+    /* ── GENERATE QR CODE FOR VENUE ─────────── */
+    (function generateVenueQR() {
+        const mapsUrl = 'https://maps.google.com/?q=Aashika+Resort+Behind+Sukhadia+Stadium+Bhilwara+Rajasthan';
+        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(mapsUrl)}&color=6D2E1F&bgcolor=FAF6EF&qzone=1`;
+        const container = document.getElementById('venue-qr-container');
+        if (!container) return;
+        const img = new Image();
+        img.onload = function() {
+            container.innerHTML = '';
+            container.style.background = 'var(--cream)';
+            container.style.padding = '6px';
+            container.style.borderRadius = '10px';
+            img.style.borderRadius = '8px';
+            img.style.width = '128px';
+            img.style.height = '128px';
+            img.alt = 'QR Code for Venue Location';
+            container.appendChild(img);
+        };
+        img.onerror = function() { /* keep placeholder */ };
+        img.src = qrApiUrl;
+    })();
+
+    /* ── LANTERNS ────────────────────────────── */
     (function initLanterns() {
         const canvas = document.getElementById('lanterns-canvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let raf;
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         resize();
         window.addEventListener('resize', resize, { passive: true });
-
-        const lanternImages = ['assets/lantern-one.png', 'assets/lantern-two.png'].map(src => {
-            const img = new Image();
-            img.src = src;
-            return img;
+        const imgs = ['assets/lantern-one.png','assets/lantern-two.png'].map(src => {
+            const img = new Image(); img.src = src; return img;
         });
         const COUNT = window.innerWidth < 600 ? 9 : 16;
-        const lanterns = [];
         class Lantern {
             constructor() { this.reset(true); }
-            reset(initial) {
-                this.img = lanternImages[Math.floor(Math.random() * lanternImages.length)];
-                this.x = Math.random() * canvas.width;
-                this.y = initial ? Math.random() * canvas.height : canvas.height + 80;
-                this.size = (window.innerWidth < 600 ? 44 : 58) + Math.random() * (window.innerWidth < 600 ? 30 : 54);
-                this.vx = (Math.random() - 0.5) * 0.28;
-                this.vy = 0.28 + Math.random() * 0.5;
-                this.sway = Math.random() * Math.PI * 2;
-                this.swaySpeed = 0.006 + Math.random() * 0.009;
-                this.alpha = 0.42 + Math.random() * 0.42;
-                this.glow = 18 + Math.random() * 26;
+            reset(init) {
+                this.img = imgs[Math.floor(Math.random()*imgs.length)];
+                this.x = Math.random()*canvas.width;
+                this.y = init ? Math.random()*canvas.height : canvas.height+80;
+                this.size = (window.innerWidth<600?44:58)+Math.random()*(window.innerWidth<600?30:54);
+                this.vx = (Math.random()-0.5)*0.28; this.vy = 0.28+Math.random()*0.5;
+                this.sway = Math.random()*Math.PI*2; this.swaySpeed = 0.006+Math.random()*0.009;
+                this.alpha = 0.42+Math.random()*0.42; this.glow = 18+Math.random()*26;
             }
             update() {
-                this.sway += this.swaySpeed;
-                this.x += this.vx + Math.sin(this.sway) * 0.18;
-                this.y -= this.vy;
-                if (this.y < -this.size * 1.6) this.reset(false);
+                this.sway += this.swaySpeed; this.x += this.vx+Math.sin(this.sway)*0.18; this.y -= this.vy;
+                if (this.y < -this.size*1.6) this.reset(false);
             }
             draw() {
                 if (!this.img.complete) return;
-                const ratio = this.img.naturalHeight / this.img.naturalWidth || 1.45;
-                const width = this.size;
-                const height = this.size * ratio;
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.globalAlpha = this.alpha;
-                ctx.shadowBlur = this.glow;
-                ctx.shadowColor = 'rgba(255,170,42,0.72)';
-                ctx.drawImage(this.img, -width / 2, -height / 2, width, height);
+                const ratio = this.img.naturalHeight/this.img.naturalWidth || 1.45;
+                ctx.save(); ctx.translate(this.x,this.y); ctx.globalAlpha = this.alpha;
+                ctx.shadowBlur = this.glow; ctx.shadowColor = 'rgba(255,170,42,0.72)';
+                ctx.drawImage(this.img,-this.size/2,-this.size*ratio/2,this.size,this.size*ratio);
                 ctx.restore();
             }
         }
-        for (let i = 0; i < COUNT; i++) lanterns.push(new Lantern());
-        function loop() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            lanterns.forEach(lantern => { lantern.update(); lantern.draw(); });
-            raf = requestAnimationFrame(loop);
-        }
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) cancelAnimationFrame(raf);
-            else loop();
-        });
+        const lanterns = Array.from({length:COUNT},()=>new Lantern());
+        function loop() { ctx.clearRect(0,0,canvas.width,canvas.height); lanterns.forEach(l=>{l.update();l.draw();}); raf=requestAnimationFrame(loop); }
+        document.addEventListener('visibilitychange',()=>{ if(document.hidden) cancelAnimationFrame(raf); else loop(); });
         loop();
     })();
 
-    /* ================================================================
-       FLOATING ROSE PETALS CANVAS
-    ================================================================ */
+    /* ── PETALS ──────────────────────────────── */
     (function initPetals() {
         const canvas = document.getElementById('petals-canvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let raf;
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         resize();
         window.addEventListener('resize', resize, { passive: true });
-
         const COLORS = ['#D4806A','#E8C07A','#C9963E','#B85940','#EEDDD3','#F5E4C0'];
         const COUNT = window.innerWidth < 600 ? 22 : 40;
-        const petals = [];
         class Petal {
             constructor() { this.reset(true); }
-            reset(initial) {
-                this.x = Math.random() * canvas.width;
-                this.y = initial ? Math.random() * canvas.height * 2 - canvas.height : -20;
-                this.r = 4 + Math.random() * 5;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = 0.6 + Math.random() * 1.2;
-                this.rot = Math.random() * Math.PI * 2;
-                this.drot = (Math.random() - 0.5) * 0.04;
-                this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-                this.alpha = 0.5 + Math.random() * 0.4;
+            reset(init) {
+                this.x = Math.random()*canvas.width;
+                this.y = init ? Math.random()*canvas.height*2-canvas.height : -20;
+                this.r = 4+Math.random()*5; this.vx = (Math.random()-0.5)*0.8; this.vy = 0.6+Math.random()*1.2;
+                this.rot = Math.random()*Math.PI*2; this.drot = (Math.random()-0.5)*0.04;
+                this.color = COLORS[Math.floor(Math.random()*COLORS.length)]; this.alpha = 0.5+Math.random()*0.4;
             }
             update() {
-                this.x += this.vx + Math.sin(this.y * 0.01) * 0.4;
-                this.y += this.vy;
-                this.rot += this.drot;
-                if (this.y > canvas.height + 20) this.reset(false);
+                this.x += this.vx+Math.sin(this.y*0.01)*0.4; this.y += this.vy; this.rot += this.drot;
+                if (this.y > canvas.height+20) this.reset(false);
             }
             draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.rot);
-                ctx.globalAlpha = this.alpha;
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.ellipse(0, 0, this.r * 0.55, this.r, 0, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
+                ctx.save(); ctx.translate(this.x,this.y); ctx.rotate(this.rot);
+                ctx.globalAlpha = this.alpha; ctx.fillStyle = this.color;
+                ctx.beginPath(); ctx.ellipse(0,0,this.r*0.55,this.r,0,0,Math.PI*2); ctx.fill(); ctx.restore();
             }
         }
-        for (let i = 0; i < COUNT; i++) petals.push(new Petal());
-        function loop() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            petals.forEach(p => { p.update(); p.draw(); });
-            raf = requestAnimationFrame(loop);
-        }
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) cancelAnimationFrame(raf);
-            else loop();
-        });
+        const petals = Array.from({length:COUNT},()=>new Petal());
+        function loop() { ctx.clearRect(0,0,canvas.width,canvas.height); petals.forEach(p=>{p.update();p.draw();}); raf=requestAnimationFrame(loop); }
+        document.addEventListener('visibilitychange',()=>{ if(document.hidden) cancelAnimationFrame(raf); else loop(); });
         loop();
     })();
 
-    /* ================================================================
-       COUNTDOWN TIMER LOGIC
-    ================================================================ */
+    /* ── COUNTDOWN ───────────────────────────── */
     let countdownInterval;
     function startCountdown() {
         clearInterval(countdownInterval);
-        const weddingDate = () => new Date(window.siteWeddingDate || '2026-11-20T23:00:00+05:30').getTime();
+        const target = new Date(window.siteWeddingDate).getTime();
         const container = document.getElementById('countdown-container');
         const complete = document.getElementById('countdown-complete');
-        const units = [
-            ['cd-days', 86400], ['cd-hours', 3600], ['cd-mins', 60], ['cd-secs', 1]
-        ];
-        function updateTimer() {
-            const secondsLeft = Math.max(0, Math.floor((weddingDate() - Date.now()) / 1000));
-            let rest = secondsLeft;
-            for (const [id, divisor] of units) {
-                const value = Math.floor(rest / divisor);
-                rest %= divisor;
-                const element = document.getElementById(id);
-                if (element) {
-                    const next = String(value).padStart(2, '0');
-                    if (element.textContent !== next) {
-                        element.textContent = next;
-                        element.classList.remove('tick');
-                        void element.offsetWidth;
-                        element.classList.add('tick');
-                    }
-                }
-            }
-            if (secondsLeft === 0) {
-                clearInterval(countdownInterval);
-                if (complete) complete.hidden = false;
-            }
+        const units = [['cd-days',86400],['cd-hours',3600],['cd-mins',60],['cd-secs',1]];
+        function tick() {
+            const left = Math.max(0, Math.floor((target-Date.now())/1000));
+            let rest = left;
+            units.forEach(([id,div]) => {
+                const val = Math.floor(rest/div); rest %= div;
+                const el = document.getElementById(id);
+                if (!el) return;
+                const next = String(val).padStart(2,'0');
+                if (el.textContent !== next) { el.textContent = next; el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
+            });
+            if (left === 0) { clearInterval(countdownInterval); if (complete) complete.hidden = false; }
         }
-        updateTimer();
-        if (weddingDate() > Date.now()) countdownInterval = setInterval(updateTimer, 1000);
+        tick();
+        if (target > Date.now()) countdownInterval = setInterval(tick, 1000);
         if (container) container.classList.add('revealed');
     }
 
-    window.updateCalendarLink = function updateCalendarLink() {
-        const button = document.getElementById('add-to-calendar');
-        if (!button) return;
-        const start = new Date(window.siteWeddingDate || '2026-11-20T23:00:00+05:30');
-        if (Number.isNaN(start.getTime())) return;
-        const end = new Date(start.getTime() + 4 * 60 * 60 * 1000);
-        const stamp = date => date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-        const params = new URLSearchParams({
-            action: 'TEMPLATE',
-            text: 'Umesh (Ankush) & Priya (Muskan) Wedding',
-            dates: `${stamp(start)}/${stamp(end)}`,
-            details: 'Celebrate the royal wedding of Umesh (Ankush) and Priya (Muskan) at Aashika Resort, Bhilwara.',
-            location: window.siteWeddingVenue || 'Aashika Resort, Bhilwara',
-            ctz: 'Asia/Kolkata'
+    window.updateCalendarLink = function() {
+        const btn = document.getElementById('add-to-calendar');
+        if (!btn) return;
+        const start = new Date(window.siteWeddingDate);
+        if (isNaN(start.getTime())) return;
+        const end = new Date(start.getTime()+4*3600000);
+        const fmt = d => d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+        btn.href = 'https://calendar.google.com/calendar/render?'+new URLSearchParams({
+            action:'TEMPLATE', text:'Ankush & Muskan Wedding',
+            dates:`${fmt(start)}/${fmt(end)}`,
+            details:'Join us for the royal wedding of Ankush & Muskan at Aashika Resort, Bhilwara.',
+            location:'Aashika Resort, Bhilwara', ctz:'Asia/Kolkata'
         });
-        button.href = `https://calendar.google.com/calendar/render?${params}`;
     };
     window.updateCalendarLink();
 
-    /* ================================================================
-       SCRATCH HEARTS CLASS (3 HEARTS LOGIC)
-    ================================================================ */
+    /* ── SCRATCH HEARTS ──────────────────────── */
     class ScratchHeart {
         constructor(canvasId, containerId, onReveal) {
             this.canvas = document.getElementById(canvasId);
             if (!this.canvas) return;
-            this.ctx = this.canvas.getContext('2d', { willReadFrequently: true });
+            this.ctx = this.canvas.getContext('2d',{willReadFrequently:true});
             this.container = document.getElementById(containerId);
             this.onReveal = onReveal;
-            this.isDrawing = false;
-            this.revealed = false;
-            this.lastPoint = null;
-            this.moves = 0;
+            this.isDrawing = false; this.revealed = false;
+            this.lastPoint = null; this.moves = 0;
             this.init();
         }
         init() {
             const rect = this.container.getBoundingClientRect();
-            this.width = rect.width || 120;
-            this.height = rect.height || 110;
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            this.canvas.width = this.width * dpr;
-            this.canvas.height = this.height * dpr;
-            this.ctx.scale(dpr, dpr);
+            this.width = rect.width||120; this.height = rect.height||110;
+            const dpr = Math.min(window.devicePixelRatio||1,2);
+            this.canvas.width = this.width*dpr; this.canvas.height = this.height*dpr;
+            this.ctx.scale(dpr,dpr);
             this.paintCover();
-            const texture = new Image();
-            texture.onload = () => { if (!this.moves) this.paintCover(texture); };
-            texture.src = 'assets/scratch-heart-foil-v2.png';
+            const tex = new Image();
+            tex.onload = () => { if (!this.moves) this.paintCover(tex); };
+            tex.src = 'assets/scratch-heart-foil-v2.png';
             const lens = document.createElement('div');
-            lens.className = 'scratch-lens';
-            lens.setAttribute('aria-hidden', 'true');
-            this.container.append(lens);
-            this.lens = lens;
-            this.canvas.setAttribute('role', 'button');
-            this.canvas.setAttribute('tabindex', '0');
-            this.canvas.setAttribute('aria-label', 'Scratch this heart to reveal wedding date');
+            lens.className = 'scratch-lens'; lens.setAttribute('aria-hidden','true');
+            this.container.append(lens); this.lens = lens;
+            this.canvas.setAttribute('role','button'); this.canvas.setAttribute('tabindex','0');
+            this.canvas.setAttribute('aria-label','Scratch to reveal wedding date');
             this.canvas.addEventListener('pointerdown', e => {
-                if (this.revealed) return;
-                this.isDrawing = true;
-                this.lastPoint = null;
-                this.canvas.setPointerCapture(e.pointerId);
-                this.scratch(e);
+                if (this.revealed) return; this.isDrawing = true; this.lastPoint = null;
+                this.canvas.setPointerCapture(e.pointerId); this.scratch(e);
             });
-            this.canvas.addEventListener('pointermove', e => {
-                this.moveLens(e);
-                if (this.isDrawing) this.scratch(e);
-            });
-            const stop = () => {
-                this.isDrawing = false;
-                this.lastPoint = null;
-                this.container.classList.remove('is-scratching');
-                this.checkProgress();
-            };
+            this.canvas.addEventListener('pointermove', e => { this.moveLens(e); if (this.isDrawing) this.scratch(e); });
+            const stop = () => { this.isDrawing = false; this.lastPoint = null; this.container.classList.remove('is-scratching'); this.checkProgress(); };
             this.canvas.addEventListener('pointerup', stop);
             this.canvas.addEventListener('pointercancel', stop);
-            this.canvas.addEventListener('pointerleave', () => {
-                if (!this.isDrawing) this.container.classList.remove('is-scratching');
-            });
-            this.canvas.addEventListener('keydown', e => {
-                if ((e.key === 'Enter' || e.key === ' ') && !this.revealed) {
-                    e.preventDefault();
-                    this.revealAll();
-                }
-            });
+            this.canvas.addEventListener('pointerleave', () => { if (!this.isDrawing) this.container.classList.remove('is-scratching'); });
+            this.canvas.addEventListener('keydown', e => { if ((e.key==='Enter'||e.key===' ')&&!this.revealed) { e.preventDefault(); this.revealAll(); } });
         }
-        paintCover(texture) {
-            const gradient = this.ctx.createLinearGradient(0, 0, this.width, this.height);
-            gradient.addColorStop(0, '#f8ddd0');
-            gradient.addColorStop(0.5, '#bd826f');
-            gradient.addColorStop(1, '#f3cca5');
-            this.ctx.fillStyle = gradient;
-            this.ctx.fillRect(0, 0, this.width, this.height);
-            if (texture) this.ctx.drawImage(texture, 0, 0, this.width, this.height);
-            this.ctx.fillStyle = 'rgba(255,251,245,.16)';
-            this.ctx.fillRect(0, 0, this.width, this.height);
-            this.ctx.fillStyle = 'rgba(84,45,40,.95)';
-            this.ctx.font = "bold 11px 'Montserrat', Georgia, serif";
-            this.ctx.textAlign = 'center';
-            this.ctx.letterSpacing = '2px';
-            this.ctx.fillText('SCRATCH', this.width / 2, this.height / 2 + 4);
+        paintCover(tex) {
+            const g = this.ctx.createLinearGradient(0,0,this.width,this.height);
+            g.addColorStop(0,'#f8ddd0'); g.addColorStop(.5,'#bd826f'); g.addColorStop(1,'#f3cca5');
+            this.ctx.fillStyle = g; this.ctx.fillRect(0,0,this.width,this.height);
+            if (tex) this.ctx.drawImage(tex,0,0,this.width,this.height);
+            this.ctx.fillStyle = 'rgba(255,251,245,.16)'; this.ctx.fillRect(0,0,this.width,this.height);
+            this.ctx.fillStyle = 'rgba(84,45,40,.95)'; this.ctx.font = "bold 11px 'Montserrat',serif";
+            this.ctx.textAlign = 'center'; this.ctx.fillText('SCRATCH',this.width/2,this.height/2+4);
         }
-        getMousePos(e) {
-            const rect = this.canvas.getBoundingClientRect();
-            return { x: e.clientX - rect.left, y: e.clientY - rect.top };
-        }
+        getPos(e) { const r = this.canvas.getBoundingClientRect(); return {x:e.clientX-r.left,y:e.clientY-r.top}; }
         moveLens(e) {
             if (!this.lens) return;
-            const pos = this.getMousePos(e);
-            this.lens.style.left = `${pos.x}px`;
-            this.lens.style.top = `${pos.y}px`;
+            const p = this.getPos(e);
+            this.lens.style.left = `${p.x}px`; this.lens.style.top = `${p.y}px`;
             if (this.isDrawing) this.container.classList.add('is-scratching');
         }
         scratch(e) {
-            if (!this.isDrawing || this.revealed) return;
+            if (!this.isDrawing||this.revealed) return;
             if (e.cancelable) e.preventDefault();
-            const pos = this.getMousePos(e);
-            this.moveLens(e);
-            const from = this.lastPoint || pos;
-            const distance = Math.hypot(pos.x - from.x, pos.y - from.y);
-            const steps = Math.max(1, Math.ceil(distance / 5));
-            this.ctx.save();
-            this.ctx.globalCompositeOperation = 'destination-out';
-            for (let i = 0; i <= steps; i++) {
-                const x = from.x + (pos.x - from.x) * i / steps;
-                const y = from.y + (pos.y - from.y) * i / steps;
-                const radius = this.width * 0.18;
-                const frost = this.ctx.createRadialGradient(x, y, radius * 0.25, x, y, radius);
-                frost.addColorStop(0, 'rgba(0,0,0,1)');
-                frost.addColorStop(0.62, 'rgba(0,0,0,0.92)');
-                frost.addColorStop(1, 'rgba(0,0,0,0)');
-                this.ctx.fillStyle = frost;
-                this.ctx.beginPath();
-                this.ctx.arc(x, y, radius, 0, Math.PI * 2);
-                this.ctx.fill();
-                for (let flake = 0; flake < 4; flake++) {
-                    const angle = Math.random() * Math.PI * 2;
-                    const offset = radius * (0.65 + Math.random() * 0.48);
-                    this.ctx.globalAlpha = 0.45 + Math.random() * 0.4;
-                    this.ctx.beginPath();
-                    this.ctx.arc(x + Math.cos(angle) * offset, y + Math.sin(angle) * offset, 1 + Math.random() * 2.5, 0, Math.PI * 2);
-                    this.ctx.fill();
+            const pos = this.getPos(e), from = this.lastPoint||pos;
+            const dist = Math.hypot(pos.x-from.x,pos.y-from.y);
+            const steps = Math.max(1,Math.ceil(dist/5));
+            this.ctx.save(); this.ctx.globalCompositeOperation = 'destination-out';
+            for (let i=0;i<=steps;i++) {
+                const x = from.x+(pos.x-from.x)*i/steps, y = from.y+(pos.y-from.y)*i/steps;
+                const radius = this.width*0.18;
+                const frost = this.ctx.createRadialGradient(x,y,radius*0.25,x,y,radius);
+                frost.addColorStop(0,'rgba(0,0,0,1)'); frost.addColorStop(.62,'rgba(0,0,0,.92)'); frost.addColorStop(1,'rgba(0,0,0,0)');
+                this.ctx.fillStyle = frost; this.ctx.beginPath(); this.ctx.arc(x,y,radius,0,Math.PI*2); this.ctx.fill();
+                for (let f=0;f<4;f++) {
+                    const ang = Math.random()*Math.PI*2, off = radius*(0.65+Math.random()*0.48);
+                    this.ctx.globalAlpha = 0.45+Math.random()*0.4;
+                    this.ctx.beginPath(); this.ctx.arc(x+Math.cos(ang)*off,y+Math.sin(ang)*off,1+Math.random()*2.5,0,Math.PI*2); this.ctx.fill();
                 }
                 this.ctx.globalAlpha = 1;
             }
-            this.ctx.restore();
-            this.lastPoint = pos;
-            if (++this.moves % 3 === 0) this.checkProgress();
+            this.ctx.restore(); this.lastPoint = pos;
+            if (++this.moves%3===0) this.checkProgress();
         }
         checkProgress() {
             if (this.revealed) return;
-            const sampleRate = 32;
-            const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-            const pixels = imageData.data;
-            let transparentPixels = 0;
-            for (let i = 3; i < pixels.length; i += sampleRate) {
-                if (pixels[i] < 128) transparentPixels++;
-            }
-            const totalPixels = pixels.length / sampleRate;
-            if ((transparentPixels / totalPixels) * 100 > 45) {
-                this.revealAll();
-            }
+            const data = this.ctx.getImageData(0,0,this.canvas.width,this.canvas.height).data;
+            let transparent = 0;
+            for (let i=3;i<data.length;i+=32) { if (data[i]<128) transparent++; }
+            if ((transparent/(data.length/32))*100>45) this.revealAll();
         }
         revealAll() {
             if (this.revealed) return;
             this.revealed = true;
             this.container.classList.remove('is-scratching');
-            this.canvas.setAttribute('aria-label', 'Wedding date part revealed');
+            this.canvas.setAttribute('aria-label','Revealed!');
             this.canvas.style.opacity = '0';
-            setTimeout(() => {
-                this.canvas.style.display = 'none';
-                this.onReveal();
-            }, 1000);
+            setTimeout(() => { this.canvas.style.display='none'; this.onReveal(); }, 1000);
         }
     }
 
-    /* Requirement: Require ALL 3 hearts to be scratched before revealing! */
     function initScratchHearts() {
-        let revealedHeartsCount = 0;
-        const totalHearts = 3;
-
-        function checkAllRevealed() {
-            revealedHeartsCount++;
-            if (revealedHeartsCount === totalHearts) {
-                const heartsRow = document.getElementById('heartsRow');
-                if (heartsRow) heartsRow.classList.add('unlocked');
-                
-                const surpriseMsg = document.getElementById('surpriseMessage');
-                if (surpriseMsg) {
-                    setTimeout(() => {
-                        surpriseMsg.classList.add('revealed');
-                        startCountdown();
-                    }, 500);
-                }
-
-                setTimeout(() => {
-                    const colors = ['#B85940', '#C9963E', '#E8C07A', '#FFFFFF'];
-                    confetti({
-                        particleCount: 50,
-                        angle: 60,
-                        spread: 60,
-                        origin: { x: 0, y: 0.6 },
-                        colors: colors,
-                        zIndex: 9999
-                    });
-                    confetti({
-                        particleCount: 50,
-                        angle: 120,
-                        spread: 60,
-                        origin: { x: 1, y: 0.6 },
-                        colors: colors,
-                        zIndex: 9999
-                    });
-                }, 800);
-            }
+        let revealed = 0;
+        function onReveal() {
+            revealed++;
+            if (revealed < 3) return; // ALL 3 must be scratched
+            const row = document.getElementById('heartsRow');
+            if (row) row.classList.add('unlocked');
+            const msg = document.getElementById('surpriseMessage');
+            if (msg) setTimeout(() => { msg.classList.add('revealed'); startCountdown(); }, 500);
+            setTimeout(() => {
+                const colors = ['#B85940','#C9963E','#E8C07A','#FFFFFF'];
+                confetti({particleCount:60,angle:60,spread:65,origin:{x:0,y:0.6},colors,zIndex:9999});
+                confetti({particleCount:60,angle:120,spread:65,origin:{x:1,y:0.6},colors,zIndex:9999});
+            }, 800);
         }
-
-        new ScratchHeart('scratchCanvas1', 'heartContainer1', checkAllRevealed);
-        new ScratchHeart('scratchCanvas2', 'heartContainer2', checkAllRevealed);
-        new ScratchHeart('scratchCanvas3', 'heartContainer3', checkAllRevealed);
+        new ScratchHeart('scratchCanvas1','heartContainer1',onReveal);
+        new ScratchHeart('scratchCanvas2','heartContainer2',onReveal);
+        new ScratchHeart('scratchCanvas3','heartContainer3',onReveal);
     }
 
-    /* ================================================================
-       ENTRY GATE & SMOOTH SCROLLING
-    ================================================================ */
-    const gate = document.getElementById('entry-gate');
-    const entryVideo = document.getElementById('entry-video');
+    /* ── ENTRY GATE ──────────────────────────── */
+    const gate        = document.getElementById('entry-gate');
+    const entryVideo  = document.getElementById('entry-video');
     const playOverlay = document.getElementById('play-overlay');
-    const openInvitation = document.getElementById('open-invitation');
-    const recipientName = document.getElementById('recipient-name');
-    const bgAudio = document.getElementById('bg-audio');
-    const mainEl = document.getElementById('main-content');
-    const lanternCanvas = document.getElementById('lanterns-canvas');
-    const petalCanvas = document.getElementById('petals-canvas');
+    const openInvBtn  = document.getElementById('open-invitation');
+    const recipName   = document.getElementById('recipient-name');
+    const bgAudio     = document.getElementById('bg-audio');
+    const mainEl      = document.getElementById('main-content');
+    const lanternC    = document.getElementById('lanterns-canvas');
+    const petalC      = document.getElementById('petals-canvas');
 
-    let audioPlaying = false;
-    let mainRevealed = false;
-    let scratchInitialized = false;
+    let audioPlaying = false, mainRevealed = false, scratchReady = false;
 
-    const invitee = (new URLSearchParams(window.location.search).get('to') || '')
-        .replace(/\s+/g, ' ')
-        .trim()
-        .slice(0, 80);
-
-    if (invitee && recipientName) {
-        recipientName.textContent = invitee;
-        if (invitee.length > 38) recipientName.classList.add('is-very-long');
-        else if (invitee.length > 24) recipientName.classList.add('is-long');
+    // Personalised invite link: ?to=Rahul%20Jain
+    const invitee = (new URLSearchParams(location.search).get('to')||'').replace(/\s+/g,' ').trim().slice(0,80);
+    if (invitee && recipName) {
+        recipName.textContent = invitee;
+        if (invitee.length>38) recipName.classList.add('is-very-long');
+        else if (invitee.length>24) recipName.classList.add('is-long');
     }
-
-    entryVideo.addEventListener('error', () => {
-        if (!mainRevealed) setTimeout(revealMain, 500);
-    });
 
     function revealMain() {
-        if (mainRevealed) return;
-        mainRevealed = true;
+        if (mainRevealed) return; mainRevealed = true;
         gate.classList.add('fade-out');
-        setTimeout(() => { gate.style.display = 'none'; }, 900);
-        mainEl.classList.add('visible', 'fade-in');
-        if (lanternCanvas) lanternCanvas.classList.add('active');
-        if (petalCanvas) petalCanvas.classList.add('active');
+        setTimeout(() => { gate.style.display='none'; }, 900);
+        mainEl.classList.add('visible','fade-in');
+        if (lanternC) lanternC.classList.add('active');
+        if (petalC) petalC.classList.add('active');
         document.body.style.overflow = 'auto';
         initReveal();
-        
-        if (!scratchInitialized) {
-            initScratchHearts();
-            scratchInitialized = true;
-        }
+        if (!scratchReady) { initScratchHearts(); scratchReady = true; }
     }
+
+    entryVideo.addEventListener('error', () => { if (!mainRevealed) setTimeout(revealMain,500); });
 
     gate.addEventListener('click', async () => {
         if (mainRevealed) return;
         gate.classList.add('is-opening');
         playOverlay.classList.add('hidden');
-        window.setTimeout(revealMain, 8000);
+        setTimeout(revealMain, 8000);
         try {
-            entryVideo.muted = false;
-            await entryVideo.play();
-            try {
-                await bgAudio.play();
-                audioPlaying = true;
-                updateAudioIcon();
-            } catch(_) {}
+            entryVideo.muted = false; await entryVideo.play();
+            try { await bgAudio.play(); audioPlaying=true; updateAudioIcon(); } catch(_){}
         } catch(err) {
             entryVideo.muted = true;
-            try {
-                await entryVideo.play();
-                try {
-                    await bgAudio.play();
-                    audioPlaying = true;
-                    updateAudioIcon();
-                } catch(_) {}
-            } catch(e2) {
-                revealMain();
-            }
+            try { await entryVideo.play(); try { await bgAudio.play(); audioPlaying=true; updateAudioIcon(); } catch(_){} } catch(e2) { revealMain(); }
         }
     });
 
-    if (openInvitation) {
-        openInvitation.addEventListener('click', event => event.stopPropagation());
-        openInvitation.addEventListener('click', () => gate.click());
-    }
+    if (openInvBtn) { openInvBtn.addEventListener('click', e=>e.stopPropagation()); openInvBtn.addEventListener('click',()=>gate.click()); }
     entryVideo.addEventListener('ended', revealMain);
     document.body.style.overflow = 'hidden';
 
-    /* ================================================================
-       AUDIO & THEME CONTROLS
-    ================================================================ */
-    const audioBtn = document.getElementById('audio-btn');
-    const iconOn = document.getElementById('icon-on');
-    const iconOff = document.getElementById('icon-off');
-    const themeBtn = document.getElementById('theme-btn');
-    const themeMoonIcon = document.getElementById('theme-icon-moon');
-    const themeSunIcon = document.getElementById('theme-icon-sun');
+    /* ── AUDIO & THEME ───────────────────────── */
+    const audioBtn  = document.getElementById('audio-btn');
+    const iconOn    = document.getElementById('icon-on');
+    const iconOff   = document.getElementById('icon-off');
+    const themeBtn  = document.getElementById('theme-btn');
+    const moonIcon  = document.getElementById('theme-icon-moon');
+    const sunIcon   = document.getElementById('theme-icon-sun');
 
     function applyTheme(mode) {
-        const lightMode = mode === 'light';
-        document.body.classList.toggle('light-theme', lightMode);
-        if (themeBtn) {
-            themeBtn.setAttribute('aria-pressed', lightMode ? 'true' : 'false');
-            themeBtn.title = lightMode ? 'Switch to dark theme' : 'Switch to light theme';
-            themeBtn.setAttribute('aria-label', themeBtn.title);
-        }
-        if (themeMoonIcon) themeMoonIcon.style.display = lightMode ? 'none' : '';
-        if (themeSunIcon) themeSunIcon.style.display = lightMode ? '' : 'none';
+        const light = mode==='light';
+        document.body.classList.toggle('light-theme',light);
+        if(themeBtn) themeBtn.setAttribute('aria-pressed',light?'true':'false');
+        if(moonIcon) moonIcon.style.display = light?'none':'';
+        if(sunIcon)  sunIcon.style.display  = light?'':'none';
     }
-
     applyTheme('light');
 
-    if (themeBtn) {
-        themeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const nextTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
-            applyTheme(nextTheme);
-        });
-    }
+    if(themeBtn) themeBtn.addEventListener('click',e=>{
+        e.stopPropagation();
+        applyTheme(document.body.classList.contains('light-theme')?'dark':'light');
+    });
 
     function updateAudioIcon() {
-        if (iconOn) iconOn.style.display = audioPlaying ? '' : 'none';
-        if (iconOff) iconOff.style.display = audioPlaying ? 'none' : '';
-        if (audioBtn) {
-            audioBtn.title = audioPlaying ? 'Mute music' : 'Unmute music';
-            audioBtn.setAttribute('aria-label', audioBtn.title);
-        }
+        if(iconOn)  iconOn.style.display  = audioPlaying?'':'none';
+        if(iconOff) iconOff.style.display = audioPlaying?'none':'';
+        if(audioBtn) audioBtn.title = audioPlaying?'Mute music':'Play music';
     }
     updateAudioIcon();
 
-    if (audioBtn) {
-        audioBtn.addEventListener('click', async (e) => {
-            e.stopPropagation();
-            if (audioPlaying) {
-                bgAudio.pause();
-                audioPlaying = false;
-            } else {
-                try {
-                    await bgAudio.play();
-                    audioPlaying = true;
-                } catch(err) {}
-            }
-            updateAudioIcon();
-        });
-    }
+    if(audioBtn) audioBtn.addEventListener('click', async e=>{
+        e.stopPropagation();
+        if(audioPlaying) { bgAudio.pause(); audioPlaying=false; }
+        else { try { await bgAudio.play(); audioPlaying=true; } catch(err){} }
+        updateAudioIcon();
+    });
 
-    /* ================================================================
-       INTERSECTION OBSERVER SCROLL REVEAL
-    ================================================================ */
+    /* ── SCROLL REVEAL ───────────────────────── */
     function initReveal() {
         const els = document.querySelectorAll('.reveal');
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('revealed');
-                    io.unobserve(e.target);
-                }
+        const io = new IntersectionObserver(entries=>{
+            entries.forEach(e=>{
+                if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
             });
-        }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
-        els.forEach(el => io.observe(el));
+        },{threshold:0.10,rootMargin:'0px 0px -40px 0px'});
+        els.forEach(el=>io.observe(el));
     }
     </script>
 </body>
