@@ -1,10 +1,9 @@
 {
-  "name": "priya-umesh-wedding-invitation",
+  "name": "ankush-weds-muskan",
   "version": "1.0.0",
-  "description": "Priya & Umesh Wedding Invitation",
+  "private": true,
+  "description": "Ankush & Muskan Wedding Invitation",
   "scripts": {
-    "build": "echo 'Static build ready'",
-    "start": "node server.js",
     "dev": "node server.js",
     "serve": "node server.js",
     "serve:py": "python server.py"
@@ -12,11 +11,9 @@
   "keywords": [
     "wedding",
     "invitation",
-    "priya",
-    "umesh",
-    "ankush"
+    "ankush",
+    "muskan"
   ],
   "author": "",
   "license": "ISC"
 }
-
