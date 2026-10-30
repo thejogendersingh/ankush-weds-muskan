@@ -204,9 +204,9 @@ html[lang='en'] #hero .blessings-text .invitation-close { display: block; margin
 /* Keep the burgundy footer above the preceding section's sticky artwork. */
 #footer-section { position: relative; z-index: 2; isolation: isolate; }
 /* All event cards share balanced top arch copy position. */
-#events-section .wardrobe-card-copy { inset: 17% 12% 22%; }
+#events-section .wardrobe-card-copy { top: 20%; bottom: auto; }
 /* Devanagari needs more visual size than the Latin card copy at the same pixel size. */
-html[lang='hi'] #events-section .wardrobe-card-copy { inset: 16% 12% 20%; }
+html[lang='hi'] #events-section .wardrobe-card-copy { top: 19%; bottom: auto; }
 html[lang='hi'] #events-section .wardrobe-day { font-size: clamp(.95rem, 4cqw, 1.25rem); letter-spacing: .045em; line-height: 1.3; }
 html[lang='hi'] #events-section .wardrobe-theme { font-size: clamp(1.05rem, 4.1cqw, 1.38rem); line-height: 1.35; }
 html[lang='hi'] #events-section .wardrobe-note { font-size: clamp(.96rem, 3.8cqw, 1.25rem); line-height: 1.43; }
