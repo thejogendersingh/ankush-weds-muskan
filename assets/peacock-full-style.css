@@ -1328,9 +1328,9 @@ body:not(.light-theme) #wardrobe-section {
 .wardrobe-card-copy {
     position: absolute;
     z-index: 1;
-    top: 20%;
-    left: 10%;
-    right: 10%;
+    top: 27%;
+    left: 8%;
+    right: 8%;
     bottom: auto;
     display: flex;
     flex-direction: column;
@@ -1462,14 +1462,14 @@ body:not(.light-theme) #wardrobe-section {
 
 @media (max-width: 520px) {
     .wardrobe-card-copy {
-        top: 20.5%;
-        left: 8%;
-        right: 8%;
+        top: 27.5%;
+        left: 6%;
+        right: 6%;
         bottom: auto;
     }
 
     .wardrobe-card-copy h3 {
-        font-size: clamp(1.4rem, 6.8cqw, 2.4rem);
+        font-size: clamp(1.4rem, 6.6cqw, 2.4rem);
         margin-top: 1cqw;
     }
 
