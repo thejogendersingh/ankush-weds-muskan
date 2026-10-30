@@ -1328,11 +1328,14 @@ body:not(.light-theme) #wardrobe-section {
 .wardrobe-card-copy {
     position: absolute;
     z-index: 1;
-    inset: 17% 14% 17%;
+    top: 13%;
+    left: 8%;
+    right: 8%;
+    bottom: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     color: var(--wardrobe-ink);
     text-align: center;
     text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
@@ -1344,30 +1347,30 @@ body:not(.light-theme) #wardrobe-section {
 }
 
 .wardrobe-day {
-    font: 700 clamp(.65rem, 2.5cqw, .95rem)/1.2 'Invitation Serif', Georgia, serif;
-    letter-spacing: .15em;
+    font: 700 clamp(.62rem, 2.4cqw, .92rem)/1.2 'Invitation Serif', Georgia, serif;
+    letter-spacing: .14em;
     text-transform: uppercase;
 }
 
 .wardrobe-card-copy h3 {
-    margin-top: 1.8cqw;
-    font: 400 clamp(1.8rem, 7.5cqw, 3.2rem)/.95 'Invitation Serif', Georgia, serif;
+    margin-top: 1.4cqw;
+    font: 400 clamp(1.6rem, 7cqw, 3rem)/.95 'Invitation Serif', Georgia, serif;
 }
 
 .wardrobe-theme {
-    margin-top: 1.4cqw !important;
-    font: italic clamp(.75rem, 2.6cqw, 1.05rem)/1.3 Georgia, serif;
+    margin-top: 1.1cqw !important;
+    font: italic clamp(.72rem, 2.4cqw, 1rem)/1.25 Georgia, serif;
     letter-spacing: .05em;
     opacity: .9;
 }
 
 .wardrobe-divider {
     display: flex;
-    width: min(30cqw, 140px);
+    width: min(28cqw, 130px);
     align-items: center;
     gap: 8px;
-    margin: 1.8cqw 0;
-    font-size: clamp(.4rem, 1.5cqw, .7rem);
+    margin: 1.3cqw 0;
+    font-size: clamp(.4rem, 1.4cqw, .65rem);
     opacity: .72;
 }
 
@@ -1380,15 +1383,15 @@ body:not(.light-theme) #wardrobe-section {
 }
 
 .wardrobe-time-text {
-    margin-top: 1.2cqw !important;
-    font: 700 clamp(.78rem, 2.8cqw, 1.1rem)/1.2 'Invitation Serif', Georgia, serif;
+    margin-top: .8cqw !important;
+    font: 700 clamp(.76rem, 2.6cqw, 1.05rem)/1.2 'Invitation Serif', Georgia, serif;
     letter-spacing: .08em;
     text-transform: uppercase;
 }
 
 .wardrobe-venue-text {
-    margin-top: .8cqw !important;
-    font: italic clamp(.7rem, 2.3cqw, .92rem)/1.2 Georgia, serif;
+    margin-top: .7cqw !important;
+    font: italic clamp(.68rem, 2.2cqw, .88rem)/1.2 Georgia, serif;
     opacity: .88;
 }
 
@@ -1459,15 +1462,42 @@ body:not(.light-theme) #wardrobe-section {
 
 @media (max-width: 520px) {
     .wardrobe-card-copy {
-        inset: 17% 12% 16%;
+        top: 12%;
+        left: 6%;
+        right: 6%;
+        bottom: auto;
     }
 
     .wardrobe-card-copy h3 {
-        font-size: clamp(1.5rem, 7cqw, 2.6rem);
+        font-size: clamp(1.4rem, 6.8cqw, 2.4rem);
+        margin-top: 1.2cqw;
+    }
+
+    .wardrobe-theme {
+        margin-top: .9cqw !important;
+    }
+
+    .wardrobe-divider {
+        margin: 1cqw 0;
+    }
+
+    .wardrobe-time-text {
+        margin-top: .7cqw !important;
     }
 
     .wardrobe-note {
         font-size: clamp(.64rem, 2.55cqw, .86rem);
+    }
+}
+
+@media (max-width: 380px) {
+    .wardrobe-card-copy {
+        top: 11%;
+    }
+
+    .wardrobe-card-copy h3 {
+        font-size: clamp(1.25rem, 6.4cqw, 1.9rem);
+        margin-top: 1cqw;
     }
 }
 

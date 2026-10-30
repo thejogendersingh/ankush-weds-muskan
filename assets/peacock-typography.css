@@ -203,22 +203,22 @@ html[lang='en'] #hero .blessings-text .invitation-close { display: block; margin
 #footer-section .footer-hashtag { color: rgba(255,255,255,.6); font-size: .74rem; font-weight: 500; letter-spacing: .12em; margin-top: .75rem; }
 /* Keep the burgundy footer above the preceding section's sticky artwork. */
 #footer-section { position: relative; z-index: 2; isolation: isolate; }
-/* All five wardrobe layouts share one balanced copy position. */
-#wardrobe-section .wardrobe-card-copy { top: 28%; bottom: 22%; }
+/* All event cards share balanced top arch copy position. */
+#events-section .wardrobe-card-copy { top: 13%; bottom: auto; }
 /* Devanagari needs more visual size than the Latin card copy at the same pixel size. */
-html[lang='hi'] #wardrobe-section .wardrobe-card-copy { top: 26%; }
-html[lang='hi'] #wardrobe-section .wardrobe-day { font-size: clamp(.95rem, 4cqw, 1.25rem); letter-spacing: .045em; line-height: 1.3; }
-html[lang='hi'] #wardrobe-section .wardrobe-theme { font-size: clamp(1.05rem, 4.1cqw, 1.38rem); line-height: 1.35; }
-html[lang='hi'] #wardrobe-section .wardrobe-note { font-size: clamp(.96rem, 3.8cqw, 1.25rem); line-height: 1.43; }
-html[lang='hi'] #wardrobe-section .wardrobe-code { font-size: clamp(.94rem, 3.65cqw, 1.16rem); line-height: 1.38; }
-html[lang='hi'] #wardrobe-section .wardrobe-code > span:first-child { font-size: .9em; letter-spacing: .08em; }
+html[lang='hi'] #events-section .wardrobe-card-copy { top: 11.5%; bottom: auto; }
+html[lang='hi'] #events-section .wardrobe-day { font-size: clamp(.95rem, 4cqw, 1.25rem); letter-spacing: .045em; line-height: 1.3; }
+html[lang='hi'] #events-section .wardrobe-theme { font-size: clamp(1.05rem, 4.1cqw, 1.38rem); line-height: 1.35; }
+html[lang='hi'] #events-section .wardrobe-note { font-size: clamp(.96rem, 3.8cqw, 1.25rem); line-height: 1.43; }
+html[lang='hi'] #events-section .wardrobe-code { font-size: clamp(.94rem, 3.65cqw, 1.16rem); line-height: 1.38; }
+html[lang='hi'] #events-section .wardrobe-code > span:first-child { font-size: .9em; letter-spacing: .08em; }
 @media (max-width: 400px) {
-  html[lang='hi'] #wardrobe-section .wardrobe-day { font-size: .82rem; }
-  html[lang='hi'] #wardrobe-section .wardrobe-card-copy h3 { margin-top: 1cqw; }
-  html[lang='hi'] #wardrobe-section .wardrobe-theme { margin-top: .8cqw !important; font-size: .9rem; }
-  html[lang='hi'] #wardrobe-section .wardrobe-divider { margin: 1cqw 0; }
-  html[lang='hi'] #wardrobe-section .wardrobe-note { font-size: .8rem; line-height: 1.33; }
-  html[lang='hi'] #wardrobe-section .wardrobe-code { margin-top: 1cqw !important; font-size: .77rem; line-height: 1.3; }
+  html[lang='hi'] #events-section .wardrobe-day { font-size: .82rem; }
+  html[lang='hi'] #events-section .wardrobe-card-copy h3 { margin-top: 1cqw; }
+  html[lang='hi'] #events-section .wardrobe-theme { margin-top: .8cqw !important; font-size: .9rem; }
+  html[lang='hi'] #events-section .wardrobe-divider { margin: 1cqw 0; }
+  html[lang='hi'] #events-section .wardrobe-note { font-size: .8rem; line-height: 1.33; }
+  html[lang='hi'] #events-section .wardrobe-code { margin-top: 1cqw !important; font-size: .77rem; line-height: 1.3; }
 }
 #family-messages-section { padding-block: clamp(2.6rem,6vw,3.7rem) clamp(3rem,7vw,4rem); }
 #family-messages-section .section-heading { font-size: clamp(3.5rem,10vw,5.5rem); }
