@@ -46,9 +46,9 @@ body:not(.light-theme) #scratch-reveal-section {
   background: linear-gradient(rgba(23,16,28,.55), rgba(23,16,28,.55)), url("scratch-section-parchment-v1.jpg") center / cover no-repeat;
 }
 body #footer-section {
-  background: linear-gradient(rgba(38,12,25,.4), rgba(20,6,12,.82)), url("footer-burgundy-floral-v1.jpg") center / cover no-repeat;
-  padding-top: clamp(3rem, 7vw, 4.5rem);
-  padding-bottom: clamp(3.5rem, 8vw, 5rem);
+  background: linear-gradient(rgba(38,12,25,.4), rgba(20,6,12,.82)), url("footer-burgundy-floral-v1.jpg") center top / cover no-repeat;
+  padding-top: clamp(2rem, 5vw, 3rem);
+  padding-bottom: clamp(2.5rem, 6vw, 3.8rem);
   min-height: auto;
 }
 #footer-section .footer-content { padding-top: 0; }
@@ -189,7 +189,7 @@ body.light-theme #rsvp-section .guest-stepper-button, body.light-theme #rsvp-sec
 
 /* Approved family-message snap carousel. */
 .message-limit { display: block; margin-top: 7px; text-align: right; color: var(--text-light); font: 600 .72rem 'Invitation Serif',Georgia,serif; }
-#family-messages-section { padding: clamp(2.4rem, 5vw, 3.2rem) 1.5rem clamp(2.5rem, 5vw, 3.4rem); background: radial-gradient(circle at 12% 18%,rgba(222,162,127,.17),transparent 33%),radial-gradient(circle at 88% 75%,rgba(198,150,62,.14),transparent 36%),var(--cream); }
+#family-messages-section { padding: clamp(2rem, 5vw, 2.8rem) 1.5rem clamp(2.2rem, 5vw, 3rem); background: url("memories-floral-parchment-v2.jpg") center / cover no-repeat; }
 .family-msg-shell { width: min(100%,520px); margin: 1.4rem auto 0; padding: 22px 20px 20px; border: 1px solid rgba(255,255,255,.7); border-radius: 20px; background: linear-gradient(145deg,rgba(255,255,255,.5),rgba(247,223,210,.25)); box-shadow: 0 16px 36px rgba(81,45,51,.1),inset 0 1px rgba(255,255,255,.88); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); text-align: center; }
 .family-msg-empty { margin: 0; color: var(--text-mid); font: italic clamp(.9rem, 2.5vw, 1.05rem)/1.55 'Invitation Serif',Georgia,serif; }
 body:not(.light-theme) .family-msg-shell { background: linear-gradient(145deg,rgba(255,255,255,.13),rgba(49,29,48,.35)); border-color: rgba(255,255,255,.2); }

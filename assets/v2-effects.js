@@ -132,8 +132,7 @@
     const sections = [
       ['hero', 'Home'], ['scratch-reveal-section', 'Date'],
       ['memories-section', 'Photos'], ['events-section', 'Events'],
-      ['wardrobe-section', 'Wardrobe'], ['rsvp-section', 'RSVP'],
-      ['family-messages-section', 'Messages']
+      ['family-section', 'Family'], ['rsvp-section', 'RSVP']
     ];
     const main = $('#main-content');
     const nav = document.createElement('nav');
