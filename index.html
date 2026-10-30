@@ -18,10 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 
     <!-- Peacock Courtyard Stylesheets -->
-    <link rel="stylesheet" href="assets/peacock-full-style.css">
-    <link rel="stylesheet" href="assets/peacock-v2-effects.css">
-    <link rel="stylesheet" href="assets/peacock-typography.css">
-    <link rel="stylesheet" href="assets/peacock-polish.css">
+    <link rel="stylesheet" href="assets/peacock-full-style.css?v=3.0">
+    <link rel="stylesheet" href="assets/peacock-v2-effects.css?v=3.0">
+    <link rel="stylesheet" href="assets/peacock-typography.css?v=3.0">
+    <link rel="stylesheet" href="assets/peacock-polish.css?v=3.0">
 
     <style>
         :root {
@@ -623,6 +623,54 @@
             color: rgba(255, 255, 255, 0.65);
             margin: 0 auto;
         }
+
+        /* Direct override for event card top arch copy placement */
+        .wardrobe-card-copy,
+        #events-section .wardrobe-card-copy {
+            position: absolute !important;
+            z-index: 2 !important;
+            top: 13% !important;
+            left: 8% !important;
+            right: 8% !important;
+            bottom: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            text-align: center !important;
+        }
+        @media (max-width: 520px) {
+            .wardrobe-card-copy,
+            #events-section .wardrobe-card-copy {
+                top: 12% !important;
+                left: 6% !important;
+                right: 6% !important;
+                bottom: auto !important;
+            }
+            .wardrobe-card-copy h3 {
+                font-size: clamp(1.4rem, 6.8cqw, 2.4rem) !important;
+                margin-top: 1.2cqw !important;
+            }
+            .wardrobe-theme {
+                margin-top: .9cqw !important;
+            }
+            .wardrobe-divider {
+                margin: 1cqw 0 !important;
+            }
+            .wardrobe-time-text {
+                margin-top: .7cqw !important;
+            }
+        }
+        @media (max-width: 380px) {
+            .wardrobe-card-copy,
+            #events-section .wardrobe-card-copy {
+                top: 11% !important;
+            }
+            .wardrobe-card-copy h3 {
+                font-size: clamp(1.25rem, 6.4cqw, 1.9rem) !important;
+                margin-top: 1cqw !important;
+            }
+        }
     </style>
 </head>
 <body class="light-theme">
@@ -1206,8 +1254,8 @@
     </div><!-- /#main-content -->
 
     <!-- Scripts -->
-    <script src="assets/canvas-confetti.min.js"></script>
-    <script src="assets/v2-effects.js"></script>
+    <script src="assets/canvas-confetti.min.js?v=3.0"></script>
+    <script src="assets/v2-effects.js?v=3.0"></script>
 
     <script>
 
