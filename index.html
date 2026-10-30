@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Ankush &amp; Muskan | Royal Wedding Invitation · 20 November 2026</title>
-    <meta name="description" content="You are cordially invited to celebrate the royal wedding of Umesh (Ankush) &amp; Priya (Muskan) on 20 November 2026 at Aashika Resort, Bhilwara.">
+    <title>Ankush &amp; Muskan | Royal Wedding Invitation · 19 - 20 November 2026</title>
+    <meta name="description" content="You are cordially invited to celebrate the royal wedding of Umesh (Ankush) &amp; Priya (Muskan) on 19 - 20 November 2026 at Aashika Resort, Bhilwara.">
     <meta property="og:title" content="Ankush &amp; Muskan — Wedding Invitation">
-    <meta property="og:description" content="Join us on 20 November 2026 at Aashika Resort, Bhilwara.">
+    <meta property="og:description" content="Join us on 19 - 20 November 2026 at Aashika Resort, Bhilwara.">
     <link rel="icon" href="assets/vinayak.png" type="image/png">
 
     <link rel="preload" as="video" href="assets/intro-video.mp4">
@@ -18,10 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 
     <!-- Peacock Courtyard Stylesheets -->
-    <link rel="stylesheet" href="assets/peacock-full-style.css?v=3.6">
-    <link rel="stylesheet" href="assets/peacock-v2-effects.css?v=3.6">
-    <link rel="stylesheet" href="assets/peacock-typography.css?v=3.6">
-    <link rel="stylesheet" href="assets/peacock-polish.css?v=3.6">
+    <link rel="stylesheet" href="assets/peacock-full-style.css?v=3.7">
+    <link rel="stylesheet" href="assets/peacock-v2-effects.css?v=3.7">
+    <link rel="stylesheet" href="assets/peacock-typography.css?v=3.7">
+    <link rel="stylesheet" href="assets/peacock-polish.css?v=3.7">
 
     <style>
         :root {
@@ -1135,22 +1135,10 @@
             <div class="text-center reveal">
                 <span class="section-label">JOIN THE CELEBRATION</span>
                 <h2 class="section-heading" style="color:var(--terracotta)">Celebrate<br>With Us</h2>
-                <p class="reveal reveal-delay-1 mt-4" style="font-style:italic;color:var(--text-light);font-size:1.15rem;margin-bottom:2rem;">
-                    A few fun questions before the big day!
-                </p>
             </div>
 
             <div class="rsvp-form-container">
-                <!-- Card 1: Guest Details -->
-                <div class="rsvp-form-card reveal">
-                    <label class="field-label-small" for="rsvp-guest-name">YOUR NAME</label>
-                    <input type="text" id="rsvp-guest-name" class="field-input-clean" placeholder="Full name">
-
-                    <label class="field-label-small" for="rsvp-guest-phone">MOBILE NUMBER</label>
-                    <input type="tel" id="rsvp-guest-phone" class="field-input-clean" placeholder="Mobile number">
-                </div>
-
-                <!-- Card 4: Leave Us a Note -->
+                <!-- Card: Leave Us a Note -->
                 <div class="rsvp-form-card reveal">
                     <h3 class="rsvp-card-heading">Leave Us a Note</h3>
                     <p class="rsvp-card-subheading">SHARE A WISH OR BLESSING FOR ANKUSH &amp; MUSKAN.</p>
@@ -1199,7 +1187,7 @@
                     Two families, one love story.<br>Thank you for being part of ours.
                 </p>
                 <p class="footer-details">
-                    <span>NOVEMBER 20, 2026</span> &bull; <span>AASHIKA RESORT, BHILWARA</span>
+                    <span>19 - 20 NOVEMBER 2026</span> &bull; <span>AASHIKA RESORT, BHILWARA</span>
                 </p>
                 <p class="footer-hashtag">
                     #AnkushWedsMuskan
@@ -1253,9 +1241,8 @@
     }
 
     function sendLoveAction() {
-        const name = document.getElementById('rsvp-guest-name').value.trim() || 'A Dear Friend';
-        const phone = document.getElementById('rsvp-guest-phone').value.trim();
-        const note = document.getElementById('rsvp-note').value.trim();
+        const noteEl = document.getElementById('rsvp-note');
+        const note = noteEl ? noteEl.value.trim() : '';
         
         confetti({
             particleCount: 70,
@@ -1265,10 +1252,8 @@
         });
 
         const text = encodeURIComponent(
-            `*Wedding RSVP & Wishes*\n` +
-            `*Name:* ${name}\n` +
-            (phone ? `*Phone:* ${phone}\n` : '') +
-            (note ? `*Message:* ${note}\n` : '') +
+            `*Wedding Wishes*\n` +
+            (note ? `*Message:* ${note}\n` : 'Heartiest congratulations & best wishes!\n') +
             `*For:* Umesh (Ankush) & Priya (Muskan)\n` +
             `*Venue:* Aashika Resort, Bhilwara`
         );
