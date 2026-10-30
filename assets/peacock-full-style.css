@@ -1328,14 +1328,11 @@ body:not(.light-theme) #wardrobe-section {
 .wardrobe-card-copy {
     position: absolute;
     z-index: 1;
-    top: 13%;
-    left: 8%;
-    right: 8%;
-    bottom: auto;
+    inset: 17% 12% 22%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     color: var(--wardrobe-ink);
     text-align: center;
     text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
@@ -1462,19 +1459,16 @@ body:not(.light-theme) #wardrobe-section {
 
 @media (max-width: 520px) {
     .wardrobe-card-copy {
-        top: 12%;
-        left: 6%;
-        right: 6%;
-        bottom: auto;
+        inset: 17% 10% 23%;
     }
 
     .wardrobe-card-copy h3 {
-        font-size: clamp(1.4rem, 6.8cqw, 2.4rem);
-        margin-top: 1.2cqw;
+        font-size: clamp(1.4rem, 6.8cqw, 2.5rem);
+        margin-top: 1cqw;
     }
 
     .wardrobe-theme {
-        margin-top: .9cqw !important;
+        margin-top: .8cqw !important;
     }
 
     .wardrobe-divider {
@@ -1487,17 +1481,6 @@ body:not(.light-theme) #wardrobe-section {
 
     .wardrobe-note {
         font-size: clamp(.64rem, 2.55cqw, .86rem);
-    }
-}
-
-@media (max-width: 380px) {
-    .wardrobe-card-copy {
-        top: 11%;
-    }
-
-    .wardrobe-card-copy h3 {
-        font-size: clamp(1.25rem, 6.4cqw, 1.9rem);
-        margin-top: 1cqw;
     }
 }
 
