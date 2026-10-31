@@ -18,10 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 
     <!-- Peacock Courtyard Stylesheets -->
-    <link rel="stylesheet" href="assets/peacock-full-style.css?v=3.7">
-    <link rel="stylesheet" href="assets/peacock-v2-effects.css?v=3.7">
-    <link rel="stylesheet" href="assets/peacock-typography.css?v=3.7">
-    <link rel="stylesheet" href="assets/peacock-polish.css?v=3.7">
+    <link rel="stylesheet" href="assets/peacock-full-style.css?v=3.8">
+    <link rel="stylesheet" href="assets/peacock-v2-effects.css?v=3.8">
+    <link rel="stylesheet" href="assets/peacock-typography.css?v=3.8">
+    <link rel="stylesheet" href="assets/peacock-polish.css?v=3.8">
 
     <style>
         :root {
@@ -640,19 +640,22 @@
             text-align: center !important;
         }
         .wardrobe-day {
-            font: 700 clamp(.62rem, 2.3cqw, .9rem)/1.2 'Invitation Serif', Georgia, serif !important;
+            font: 800 clamp(.62rem, 2.3cqw, .9rem)/1.2 'Invitation Serif', Georgia, serif !important;
             letter-spacing: .12em !important;
             text-transform: uppercase !important;
+            font-weight: 800 !important;
         }
         .wardrobe-card-copy h3 {
             margin-top: 1cqw !important;
-            font: 400 clamp(1.45rem, 6.6cqw, 2.6rem)/1.0 'Invitation Serif', Georgia, serif !important;
+            font: 700 clamp(1.45rem, 6.6cqw, 2.6rem)/1.0 'Invitation Serif', Georgia, serif !important;
+            font-weight: 700 !important;
         }
         .wardrobe-theme {
             margin-top: .8cqw !important;
-            font: italic clamp(.72rem, 2.3cqw, .96rem)/1.25 Georgia, serif !important;
+            font: italic 600 clamp(.72rem, 2.3cqw, .96rem)/1.25 Georgia, serif !important;
             letter-spacing: .04em !important;
-            opacity: .92 !important;
+            opacity: 1 !important;
+            font-weight: 600 !important;
         }
         .wardrobe-divider {
             display: flex !important;
@@ -661,18 +664,20 @@
             gap: 6px !important;
             margin: 1cqw 0 !important;
             font-size: clamp(.4rem, 1.2cqw, .62rem) !important;
-            opacity: .72 !important;
+            opacity: .85 !important;
         }
         .wardrobe-time-text {
             margin-top: .7cqw !important;
-            font: 700 clamp(.74rem, 2.5cqw, 1.02rem)/1.2 'Invitation Serif', Georgia, serif !important;
+            font: 800 clamp(.74rem, 2.5cqw, 1.02rem)/1.2 'Invitation Serif', Georgia, serif !important;
             letter-spacing: .08em !important;
             text-transform: uppercase !important;
+            font-weight: 800 !important;
         }
         .wardrobe-venue-text {
             margin-top: .7cqw !important;
-            font: italic clamp(.68rem, 2.2cqw, .88rem)/1.2 Georgia, serif !important;
-            opacity: .88 !important;
+            font: italic 600 clamp(.68rem, 2.2cqw, .88rem)/1.2 Georgia, serif !important;
+            opacity: 1 !important;
+            font-weight: 600 !important;
         }
         @media (max-width: 520px) {
             .wardrobe-card-copy,
@@ -684,6 +689,7 @@
             }
             .wardrobe-card-copy h3 {
                 font-size: clamp(1.35rem, 6.4cqw, 2.3rem) !important;
+                font-weight: 700 !important;
                 margin-top: .9cqw !important;
             }
         }
@@ -1124,47 +1130,6 @@
                         <span>Get Directions</span>
                     </a>
                 </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════
-             8. RSVP INTERACTIVE FORM (Exact Peacock Courtyard Fun Form)
-        ═══════════════════════════════════════════ -->
-        <section id="rsvp-section">
-            <div class="section-texture section-texture--rsvp" aria-hidden="true"></div>
-            <div class="text-center reveal">
-                <span class="section-label">JOIN THE CELEBRATION</span>
-                <h2 class="section-heading" style="color:var(--terracotta)">Celebrate<br>With Us</h2>
-            </div>
-
-            <div class="rsvp-form-container">
-                <!-- Card: Leave Us a Note -->
-                <div class="rsvp-form-card reveal">
-                    <h3 class="rsvp-card-heading">Leave Us a Note</h3>
-                    <p class="rsvp-card-subheading">SHARE A WISH OR BLESSING FOR ANKUSH &amp; MUSKAN.</p>
-                    <textarea id="rsvp-note" class="note-textarea" maxlength="240" placeholder="Write something from the heart..." oninput="document.getElementById('note-chars').textContent = this.value.length"></textarea>
-                    <span class="char-count"><span id="note-chars">0</span> / 240 characters</span>
-                </div>
-
-                <!-- Submit Button -->
-                <button type="button" class="btn-send-love reveal" id="btn-submit-love" onclick="sendLoveAction()">
-                    SEND LOVE
-                </button>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════
-             9. FAMILY MESSAGES (Section Above Footer - Compact & Refined)
-        ═══════════════════════════════════════════ -->
-        <section id="family-messages-section">
-            <div class="text-center reveal">
-                <h2 class="section-heading" style="color:var(--terracotta);">Family Messages</h2>
-            </div>
-            <div class="family-msg-shell reveal reveal-delay-1">
-                <p class="family-msg-empty">
-                    Family wishes will appear here once approved.
-                </p>
-                <div class="family-msg-pip" aria-hidden="true">&#9679;</div>
             </div>
         </section>
 
