@@ -18,10 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 
     <!-- Peacock Courtyard Stylesheets -->
-    <link rel="stylesheet" href="assets/peacock-full-style.css?v=3.8">
-    <link rel="stylesheet" href="assets/peacock-v2-effects.css?v=3.8">
-    <link rel="stylesheet" href="assets/peacock-typography.css?v=3.8">
-    <link rel="stylesheet" href="assets/peacock-polish.css?v=3.8">
+    <link rel="stylesheet" href="assets/peacock-full-style.css?v=3.9">
+    <link rel="stylesheet" href="assets/peacock-v2-effects.css?v=3.9">
+    <link rel="stylesheet" href="assets/peacock-typography.css?v=3.9">
+    <link rel="stylesheet" href="assets/peacock-polish.css?v=3.9">
 
     <style>
         :root {
@@ -639,23 +639,57 @@
             justify-content: flex-start !important;
             text-align: center !important;
         }
+        /* Perfect event card copy placement & high-visibility bold dark typography */
+        .wardrobe-card-copy,
+        #events-section .wardrobe-card-copy {
+            position: absolute !important;
+            z-index: 2 !important;
+            top: 27% !important;
+            left: 8% !important;
+            right: 8% !important;
+            bottom: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            text-align: center !important;
+            color: #240E08 !important;
+            text-shadow: none !important;
+        }
         .wardrobe-day {
-            font: 800 clamp(.62rem, 2.3cqw, .9rem)/1.2 'Invitation Serif', Georgia, serif !important;
+            font-family: Georgia, 'EB Garamond', serif !important;
+            font-size: clamp(.68rem, 2.4cqw, .95rem) !important;
+            line-height: 1.25 !important;
             letter-spacing: .12em !important;
             text-transform: uppercase !important;
             font-weight: 800 !important;
+            color: #240E08 !important;
+            opacity: 1 !important;
+            text-shadow: none !important;
         }
         .wardrobe-card-copy h3 {
             margin-top: 1cqw !important;
-            font: 700 clamp(1.45rem, 6.6cqw, 2.6rem)/1.0 'Invitation Serif', Georgia, serif !important;
+            font-family: 'Cormorant Garamond', Georgia, serif !important;
+            font-size: clamp(1.45rem, 6.6cqw, 2.6rem) !important;
+            line-height: 1.05 !important;
             font-weight: 700 !important;
+            color: #240E08 !important;
+            letter-spacing: 0.04em !important;
+            text-transform: uppercase !important;
+            opacity: 1 !important;
+            text-shadow: none !important;
         }
         .wardrobe-theme {
             margin-top: .8cqw !important;
-            font: italic 600 clamp(.72rem, 2.3cqw, .96rem)/1.25 Georgia, serif !important;
-            letter-spacing: .04em !important;
+            font-family: Georgia, serif !important;
+            font-style: italic !important;
+            font-size: clamp(.74rem, 2.4cqw, 1.02rem) !important;
+            line-height: 1.25 !important;
+            letter-spacing: .03em !important;
+            font-weight: 700 !important;
+            color: #3D1C14 !important;
             opacity: 1 !important;
-            font-weight: 600 !important;
+            text-shadow: none !important;
         }
         .wardrobe-divider {
             display: flex !important;
@@ -664,20 +698,31 @@
             gap: 6px !important;
             margin: 1cqw 0 !important;
             font-size: clamp(.4rem, 1.2cqw, .62rem) !important;
-            opacity: .85 !important;
+            color: #7D4828 !important;
+            opacity: 0.9 !important;
         }
         .wardrobe-time-text {
             margin-top: .7cqw !important;
-            font: 800 clamp(.74rem, 2.5cqw, 1.02rem)/1.2 'Invitation Serif', Georgia, serif !important;
+            font-family: Georgia, 'EB Garamond', serif !important;
+            font-size: clamp(.76rem, 2.6cqw, 1.05rem) !important;
+            line-height: 1.25 !important;
             letter-spacing: .08em !important;
             text-transform: uppercase !important;
             font-weight: 800 !important;
+            color: #240E08 !important;
+            opacity: 1 !important;
+            text-shadow: none !important;
         }
         .wardrobe-venue-text {
             margin-top: .7cqw !important;
-            font: italic 600 clamp(.68rem, 2.2cqw, .88rem)/1.2 Georgia, serif !important;
+            font-family: Georgia, serif !important;
+            font-style: italic !important;
+            font-size: clamp(.70rem, 2.3cqw, .92rem) !important;
+            line-height: 1.25 !important;
             opacity: 1 !important;
-            font-weight: 600 !important;
+            font-weight: 700 !important;
+            color: #3D1C14 !important;
+            text-shadow: none !important;
         }
         @media (max-width: 520px) {
             .wardrobe-card-copy,
@@ -692,6 +737,42 @@
                 font-weight: 700 !important;
                 margin-top: .9cqw !important;
             }
+        }
+
+        /* Site-wide small text high-visibility enhancements */
+        .section-label {
+            font-weight: 700 !important;
+            color: #8A351E !important;
+            letter-spacing: 0.16em !important;
+        }
+        #hero .blessings-text {
+            font-weight: 600 !important;
+            color: #2D140E !important;
+        }
+        .family-subtitle {
+            font-weight: 600 !important;
+            color: #3D1C14 !important;
+        }
+        .family-name-item {
+            font-weight: 600 !important;
+            color: #1F0D09 !important;
+        }
+        .family-name-item.late {
+            font-weight: 600 !important;
+            color: #4A231A !important;
+        }
+        .family-name-item.main {
+            font-weight: 700 !important;
+            color: #5C2831 !important;
+        }
+        .footer-story {
+            font-weight: 600 !important;
+            color: #FFF2E6 !important;
+        }
+        .footer-details {
+            font-weight: 700 !important;
+            color: #F0CAA0 !important;
+            letter-spacing: 0.18em !important;
         }
     </style>
 </head>
@@ -892,7 +973,7 @@
                         <h3>Vinayak Sthapana</h3>
                         <p class="wardrobe-theme">Auspicious Divine Beginnings</p>
                         <span class="wardrobe-divider" aria-hidden="true">✦</span>
-                        <p class="wardrobe-time-text"><strong>Time:</strong> 7:00 AM</p>
+                        <p class="wardrobe-time-text">Time: 7:00 AM</p>
                     </div>
                 </article>
 
@@ -900,11 +981,11 @@
                 <article class="wardrobe-card wardrobe-card--mehendi reveal">
                     <img src="assets/kalash-final.png" alt="Kalash" decoding="async">
                     <div class="wardrobe-card-copy">
-                        <p class="wardrobe-day" style="font-weight: 800; letter-spacing: .12em;"><strong>Thursday, 19 November 2026</strong></p>
+                        <p class="wardrobe-day">Thursday, 19 November 2026</p>
                         <h3>Kalash</h3>
                         <p class="wardrobe-theme">Sacred Blessings &amp; Mangal Kalash</p>
                         <span class="wardrobe-divider" aria-hidden="true">✦</span>
-                        <p class="wardrobe-time-text" style="font-weight: 800;"><strong>Time: 9:15 AM</strong></p>
+                        <p class="wardrobe-time-text">Time: 9:15 AM</p>
                     </div>
                 </article>
 
@@ -916,7 +997,7 @@
                         <h3>Carnival (Haldi)</h3>
                         <p class="wardrobe-theme">Hues of Yellow &amp; Sunny Marigold</p>
                         <span class="wardrobe-divider" aria-hidden="true">✦</span>
-                        <p class="wardrobe-time-text"><strong>Time:</strong> 11:00 AM</p>
+                        <p class="wardrobe-time-text">Time: 11:00 AM</p>
                     </div>
                 </article>
 
@@ -928,7 +1009,7 @@
                         <h3>Mayra</h3>
                         <p class="wardrobe-theme">Festive Bandhej &amp; Maternal Traditions</p>
                         <span class="wardrobe-divider" aria-hidden="true">✦</span>
-                        <p class="wardrobe-time-text"><strong>Time:</strong> 2:30 PM</p>
+                        <p class="wardrobe-time-text">Time: 2:30 PM</p>
                     </div>
                 </article>
 
@@ -940,7 +1021,7 @@
                         <h3>Sangeet Sandhya</h3>
                         <p class="wardrobe-theme">Music, Dance &amp; Grand Celebrations</p>
                         <span class="wardrobe-divider" aria-hidden="true">✦</span>
-                        <p class="wardrobe-time-text"><strong>Time:</strong> 7:00 PM</p>
+                        <p class="wardrobe-time-text">Time: 7:00 PM</p>
                     </div>
                 </article>
 
@@ -952,7 +1033,7 @@
                         <h3>Ring Ceremony</h3>
                         <p class="wardrobe-theme">Two Rings, One Promise &amp; Glamour</p>
                         <span class="wardrobe-divider" aria-hidden="true">✦</span>
-                        <p class="wardrobe-time-text"><strong>Time:</strong> 9:15 AM</p>
+                        <p class="wardrobe-time-text">Time: 9:15 AM</p>
                     </div>
                 </article>
 
@@ -964,7 +1045,7 @@
                         <h3>Nikasi</h3>
                         <p class="wardrobe-theme">Groom's Royal Procession &amp; Safa</p>
                         <span class="wardrobe-divider" aria-hidden="true">✦</span>
-                        <p class="wardrobe-time-text"><strong>Time:</strong> 1:30 PM</p>
+                        <p class="wardrobe-time-text">Time: 1:30 PM</p>
                     </div>
                 </article>
 
@@ -976,7 +1057,7 @@
                         <h3>Reception</h3>
                         <p class="wardrobe-theme">Grand Formal Feast &amp; Celebrations</p>
                         <span class="wardrobe-divider" aria-hidden="true">✦</span>
-                        <p class="wardrobe-time-text"><strong>Time:</strong> 6:00 PM</p>
+                        <p class="wardrobe-time-text">Time: 6:00 PM</p>
                     </div>
                 </article>
 
@@ -988,7 +1069,7 @@
                         <h3>Shubh Vivah</h3>
                         <p class="wardrobe-theme">Sacred Pheras &amp; Royal Red Vows</p>
                         <span class="wardrobe-divider" aria-hidden="true">✦</span>
-                        <p class="wardrobe-time-text"><strong>Time:</strong> 11:00 PM</p>
+                        <p class="wardrobe-time-text">Time: 11:00 PM</p>
                         <p class="wardrobe-venue-text">Aashika Resort, Bhilwara</p>
                     </div>
                 </article>
